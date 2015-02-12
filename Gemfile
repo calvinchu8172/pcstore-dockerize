@@ -37,8 +37,10 @@ gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'kaminari'
+gem 'puma' #better performance
 
 group :development, :test do
+  gem 'better_errors' #better error message
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
@@ -48,10 +50,11 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'sqlite3'
+  gem 'pry-rails' #irb replacement
 end
 
 group :production do
- gem 'pg' #for heroku database
+  gem 'pg' #for heroku database
 end
 
 
