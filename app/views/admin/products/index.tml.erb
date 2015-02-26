@@ -1,0 +1,23 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <td>商品名稱</td>
+      <td>售價</td>
+      <td>狀態</td>
+      <td></td>
+    </tr>
+  </thead>
+
+  <% @products.each do |product| %>
+  <tr>
+    <td><%=product.name %></td>
+    <td><%=product.price %></td>
+    <td><%=product.is_online %></td>
+    <td>
+      <%= edit_button edit_admin_product_path(product)%>
+      <%= destroy_button admin_product_path(product)%>
+    </td>
+  </tr>
+  <%end%>
+
+</table>
