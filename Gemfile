@@ -38,6 +38,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'kaminari'
 gem 'puma' #better performance
+gem 'simple_form'
 
 group :development, :test do
   gem 'better_errors' #better error message
