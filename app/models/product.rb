@@ -1,5 +1,7 @@
 class Product < ActiveRecord::Base
 
+  mount_uploader :image, ProductImageUploader
+
   default_scope{ where(is_deleted: false) }
 
   def set_delete
