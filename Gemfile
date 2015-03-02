@@ -39,6 +39,7 @@ gem 'mini_magick'
 gem 'kaminari'
 gem 'puma' #better performance
 gem 'simple_form'
+gem 'country_select' #country_selector
 
 group :development, :test do
   gem 'better_errors' #better error message
@@ -52,6 +53,7 @@ group :development, :test do
   gem 'spring'
   gem 'sqlite3'
   gem 'pry-rails' #irb replacement
+  gem 'hirb-unicode' #better console looking
 end
 
 group :production do
