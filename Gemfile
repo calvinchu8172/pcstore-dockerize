@@ -56,6 +56,10 @@ group :development, :test do
   gem 'hirb-unicode' #better console looking
 end
 
+group :test do
+  gem 'minitest-reporters'
+end
+
 group :production do
   gem 'pg' #for heroku database
 end
