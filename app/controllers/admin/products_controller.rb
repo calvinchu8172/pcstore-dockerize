@@ -32,13 +32,13 @@ class Admin::ProductsController < Admin::BaseController
 
   def destroy
     @product = Product.find_by(id: params[:id])
-    @product.set_delete
+    @product.destroy
     redirect_to admin_products_path, notice: '商品已刪除'
   end
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :price, :is_online, :image)
+    params.require(:product).permit(:name, :description, :price, :is_online, :image, :category_id)
   end
 
 end

@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-
   devise_for :users
   root 'static_pages#index'
 
   namespace :admin do
     resources :dashboards, only:[:index]
     resources :products
+    resources :categories, except:[:show]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
