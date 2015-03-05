@@ -1,1 +1,7 @@
 <h1>Welcome!</h1>
+
+<% unless @cart.empty? %>
+You have <%= @cart.items.count %> items
+<% else %>
+empty!
+<% end %> 

@@ -6,7 +6,7 @@ class Product < ActiveRecord::Base
 
   
 
-  default_scope{ where(is_deleted: false) }
+  default_scope { where(is_deleted: false) }
 
   # 被include SoftDestroy所取代，SoftDestroy方法寫在concern內
   # def set_delete
