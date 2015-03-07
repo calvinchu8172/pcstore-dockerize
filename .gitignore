@@ -16,3 +16,5 @@
 !/log/.keep
 /tmp
 /public/uploads/*
+/config/settings.yml
+/config/database.yml

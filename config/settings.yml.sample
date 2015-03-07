@@ -1,0 +1,13 @@
+default: &default
+  Facebook:
+    APP_ID: ''
+    APP_SECRET: ''
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
