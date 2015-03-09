@@ -41,6 +41,7 @@ gem 'puma' #better performance
 gem 'simple_form'
 gem 'country_select' #country_selector
 gem 'settingslogic'  #settings plugin
+gem 'omniauth-facebook' #oauth for facebook
 
 group :development, :test do
   gem 'better_errors' #better error message
