@@ -3,8 +3,9 @@
     <div class="list-group">
       <a href="#" class="list-group-item active">商品分類</a>
       <% @categories.each do |category|%>
-      <%= link_to category.name, '#', class: 'list-group-item'%>
+      <%= link_to category.name, products_path(category: category), class: 'list-group-item'%>
       <% end %>
+      <%= link_to '全部商品', products_path, class: 'list-group-item'%>
     </div>
   </div>
 
@@ -14,3 +15,5 @@
     </div>
   </div>
 </div>
+
+<%= debug(params) %>
