@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-2">
+    <div class="list-group">
+      <a href="#" class="list-group-item active">商品分類</a>
+      <% @categories.each do |category|%>
+      <%link_to category.name, '#', class: 'list-group-item'%>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-10">
+    <div class="row">
+      <% @products.each do |product| %>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <%= image_tag product.image.normal %>
+          <div class="caption">
+            <h3><%= product.name %></h3>
+            <p><%= product.description %></p>
+            <p>
+              <%= link_to "詳細", product, class:'btn btn-default' %>
+
+            </p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

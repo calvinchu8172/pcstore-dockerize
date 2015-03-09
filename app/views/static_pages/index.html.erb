@@ -1,7 +1,6 @@
-<h1>Welcome!</h1>
-
-<% unless @cart.empty? %>
-You have <%= @cart.items.count %> items
-<% else %>
-empty!
-<% end %> 
+<div class="jumbotron">
+  <h1>Hello, world!</h1>
+  <p>這是我的小商店</p>
+  <p><%= link_to "開始購物", products_path, class:"btn btn-primary btn-lg" %></p>
+  <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p> -->
+</div>

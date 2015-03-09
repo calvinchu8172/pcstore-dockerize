@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  #devise
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  
+  #frontend
   root 'static_pages#index'
+  resources :products, only:[:index, :show]
 
+  #backend
   namespace :admin do
     resources :dashboards, only:[:index]
     resources :products
