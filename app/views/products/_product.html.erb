@@ -5,6 +5,7 @@
           <div class="caption">
             <h3><%= product.name %></h3>
             <p><%= product.description %></p>
+            <p>售價：<%=number_to_currency product.price %></p>
             <p>
               <%= link_to "詳細", product, class:'btn btn-default' %>
               <%= link_to "放入購物車", add_cart_path(product), method: :post, class:'btn btn-success' %>
