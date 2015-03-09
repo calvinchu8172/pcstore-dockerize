@@ -3,7 +3,7 @@
     <div class="list-group">
       <a href="#" class="list-group-item active">商品分類</a>
       <% @categories.each do |category|%>
-      <%link_to category.name, '#', class: 'list-group-item'%>
+      <%= link_to category.name, '#', class: 'list-group-item'%>
       <% end %>
     </div>
   </div>
@@ -19,7 +19,7 @@
             <p><%= product.description %></p>
             <p>
               <%= link_to "詳細", product, class:'btn btn-default' %>
-
+              <%= link_to "放入購物車", add_cart_path(product), method: :post, class:'btn btn-success' %>
             </p>
           </div>
         </div>

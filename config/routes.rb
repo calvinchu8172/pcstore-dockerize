@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   #frontend
   root 'static_pages#index'
   resources :products, only:[:index, :show]
+  resource :cart, only:[:index] do
+      post 'add', path:'add/:id'
+      #checkout
+  end
 
   #backend
   namespace :admin do
