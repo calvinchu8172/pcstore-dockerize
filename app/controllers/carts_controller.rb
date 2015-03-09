@@ -6,6 +6,7 @@ class CartsController < ApplicationController
 
     if product
       @cart.add_item(product.id)
+      session["cart"] = @cart.serialize
       redirect_to :back, notice: "#{product.name} 已加入購物車！"
     else
       redirect_to :back, notice: "查無此商品"

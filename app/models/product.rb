@@ -20,7 +20,7 @@ class Product < ActiveRecord::Base
     # else
       # "未上架"
     # end
-    # 更簡潔的寫法
+    # 以下為更簡潔的寫法
     is_online ? "上架中" : "未上架"
   end
 
