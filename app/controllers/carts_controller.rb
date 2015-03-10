@@ -4,6 +4,14 @@ class CartsController < ApplicationController
   def view
   end
 
+  def create
+    render text: cart_params
+  end
+
+  def checkout
+    @order_form = OrderForm.new
+  end
+
   def add
     product = Product.find_by(id: params[:id])
 
@@ -16,4 +24,9 @@ class CartsController < ApplicationController
     end
   end
 
+  private
+  def cart_params
+    params.require(:order_form).permit(receipt: [:name, :tel, :country, :city, :address])
+  end
+  
 end

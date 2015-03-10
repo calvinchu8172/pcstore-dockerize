@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   #frontend
   root 'static_pages#index'
   resources :products, only:[:index, :show]
+  resources :carts, only: [:create]
+
   resource :cart, only:[:index] do
       get 'view'
+      get 'checkout'
       post 'add', path:'add/:id'
       #checkout
   end
