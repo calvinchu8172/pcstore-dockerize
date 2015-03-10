@@ -31,6 +31,10 @@ class Cart
     @items.empty?
   end
 
+  def total_price
+    @items.inject(0) { |sum, item| sum + item.price }
+  end
+
   def serialize
     items = @items.map do |item|
       {"product_id" => item.product_id, "quantity" => item.quantity }

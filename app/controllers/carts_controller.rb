@@ -1,6 +1,9 @@
 class CartsController < ApplicationController
   before_action :set_cart
 
+  def view
+  end
+
   def add
     product = Product.find_by(id: params[:id])
 

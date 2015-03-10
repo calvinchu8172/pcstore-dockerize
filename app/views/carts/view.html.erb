@@ -1,0 +1,17 @@
+<h1>您的購物車</h1>
+<table class="table table-hover table-condensed">
+  <thead>
+    <tr>
+      <td>項目</td>
+      <td>數量</td>
+      <td>價錢</td>
+    </tr>
+  </thead>
+  <% @cart.items.each do |item|%>
+   <tr>
+      <td><%= item.product.name %></td>
+      <td><%= item.quantity %></td>
+      <td><%= item.price %></td>
+    </tr>
+  <% end %>
+</table>

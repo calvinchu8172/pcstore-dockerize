@@ -37,6 +37,18 @@ class CartTest < ActiveSupport::TestCase
     assert_equal cart.serialize, items_hash
   end
 
+  test "calculate total price" do
+    p1 = Product.create(name:'dd', price:10)
+    p2 = Product.create(name:'dd', price:20)
+
+    cart = Cart.new
+    cart.add_item(p1.id)
+    cart.add_item(p2.id)
+    cart.add_item(p2.id)
+
+    assert_equal 50, cart.total_price
+  end
+
   private
   def items_hash
     {

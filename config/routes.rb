@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   resources :products, only:[:index, :show]
   resource :cart, only:[:index] do
+      get 'view'
       post 'add', path:'add/:id'
       #checkout
   end
