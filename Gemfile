@@ -42,6 +42,7 @@ gem 'simple_form'
 gem 'country_select' #country_selector
 gem 'settingslogic'  #settings plugin
 gem 'omniauth-facebook' #oauth for facebook
+gem 'braintree' #for paypal
 
 group :development, :test do
   gem 'better_errors' #better error message

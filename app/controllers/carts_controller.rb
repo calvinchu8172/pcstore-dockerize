@@ -5,7 +5,9 @@ class CartsController < ApplicationController
   end
 
   def create
-    render text: cart_params
+    save_receipt
+    save_order
+    redirect_to new_payment_path, notice: '訂單成立'
   end
 
   def checkout
@@ -28,5 +30,11 @@ class CartsController < ApplicationController
   def cart_params
     params.require(:order_form).permit(receipt: [:name, :tel, :country, :city, :address])
   end
-  
+
+  def save_receipt
+  end
+
+  def save_order
+  end
+
 end
