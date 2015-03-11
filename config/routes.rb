@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   resources :products, only:[:index, :show]
   resources :carts, only: [:create]
-  resources :payment, only: [:new, :create]
+  resource :payment, only: [:new, :create]
 
   resource :cart, only:[:index] do
       get 'view'

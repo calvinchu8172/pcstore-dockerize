@@ -3,7 +3,7 @@
 <hr />
 
 <%= simple_form_for @order_form, url: carts_path do |f| %>
-  <%= f.fields_for :recipt do |r| %>
+  <%= f.fields_for :receipt do |r| %>
     <%= r.input :name, label:"收件人" %>
     <%= r.input :tel, label:"電話" %>
     <%= r.input :country, label:"國家" %>
@@ -12,3 +12,4 @@
   <% end %>
   <%= f.submit '下一步', class:'btn btn-primary' %>
 <% end %>
+<hr />

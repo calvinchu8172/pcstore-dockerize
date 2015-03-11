@@ -13,4 +13,10 @@
       <td><%= item.price %></td>
     </tr>
   <% end %>
+  <tfoot>
+    <tr>
+      <td colspan="2" class="test-right">總價</td>
+      <td><%= @cart.total_price %></td>
+    </tr>
+  </tfoot>  
 </table>

@@ -5,9 +5,11 @@ class CartsController < ApplicationController
   end
 
   def create
-    save_receipt
-    save_order
-    redirect_to new_payment_path, notice: '訂單成立'
+    if save_receipt && save_order
+      redirect_to new_payment_path, notice: '訂單成立'
+    else
+      render :view, notice: '訂單未傳送成功'
+    end
   end
 
   def checkout
@@ -32,9 +34,20 @@ class CartsController < ApplicationController
   end
 
   def save_receipt
+    receipt = Receipt.new(cart_params[:receipt])
+    receipt.save
   end
 
   def save_order
+    order_items = []
+    @cart.items.each do |item|
+      hash = {product_id: item.product.id, quantity: item.quantity }
+      order_items << OrderItem.new(hash)
+    end
+    order = Order.new
+    order.user = current_user
+    order.order_items = order_items
+    order.save
   end
 
 end
