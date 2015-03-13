@@ -43,6 +43,8 @@ gem 'country_select' #country_selector
 gem 'settingslogic'  #settings plugin
 gem 'omniauth-facebook' #oauth for facebook
 gem 'braintree' #for paypal
+gem 'state_machine', :require => 'state_machine/core' #state machine
+gem 'state_machines-activerecord'
 
 group :development, :test do
   gem 'better_errors' #better error message

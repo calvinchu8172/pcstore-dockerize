@@ -6,6 +6,7 @@ class CartsController < ApplicationController
 
   def create
     if save_receipt && save_order
+      session["cart"] = nil
       redirect_to new_payment_path, notice: '訂單成立'
     else
       render :view, notice: '訂單未傳送成功'
@@ -35,15 +36,18 @@ class CartsController < ApplicationController
 
   def save_receipt
     receipt = Receipt.new(cart_params[:receipt])
+    receipt.order = @order
     receipt.save
   end
 
   def save_order
     order_items = []
     @cart.items.each do |item|
-      hash = {product_id: item.product.id, quantity: item.quantity }
+      hash = { product_id: item.product.id, 
+               quantity: item.quantity }
       order_items << OrderItem.new(hash)
     end
+    
     order = Order.new
     order.user = current_user
     order.order_items = order_items
