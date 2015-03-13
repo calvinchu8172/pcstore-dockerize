@@ -1,7 +1,15 @@
 require 'test_helper'
 
 class OrderItemTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "calculate order total price" do
+
+    p1 = Product.create(name:'gg', price: 100)
+
+    order = Order.create
+    order_item = OrderItem.new(product_id: p1.id, quantity: 2, order_id: order.id)
+    order.order_items = [order_item]
+    order.save
+
+    assert_equal 200, order_item.price
+  end
 end
