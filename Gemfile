@@ -70,7 +70,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg' #for heroku database
+  # gem 'pg' #for heroku database but not for Linode deploy
 end
 
 
