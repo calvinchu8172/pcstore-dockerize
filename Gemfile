@@ -59,6 +59,9 @@ group :development, :test do
   gem 'sqlite3'
   gem 'pry-rails' #irb replacement
   gem 'hirb-unicode' #better console looking
+  gem 'capistrano-rails' #deploy helper
+  gem 'capistrano-passenger'
+
 end
 
 group :test do
