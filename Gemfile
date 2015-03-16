@@ -45,6 +45,7 @@ gem 'omniauth-facebook' #oauth for facebook
 gem 'braintree' #for paypal
 gem 'state_machine', :require => 'state_machine/core' #state machine
 gem 'state_machines-activerecord'
+gem 'mysql2'
 
 group :development, :test do
   gem 'better_errors' #better error message
@@ -56,7 +57,7 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'sqlite3'
+  # gem 'sqlite3' #change to mysql
   gem 'pry-rails' #irb replacement
   gem 'hirb-unicode' #better console looking
   gem 'capistrano-rails' #deploy helper

@@ -14,70 +14,70 @@
 ActiveRecord::Schema.define(version: 20150311112406) do
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name"
-    t.boolean  "is_enabled", default: false
-    t.boolean  "is_deleted", default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "name",       limit: 255
+    t.boolean  "is_enabled", limit: 1,   default: false
+    t.boolean  "is_deleted", limit: 1,   default: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer  "order_id"
-    t.integer  "product_id"
-    t.integer  "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "order_id",   limit: 4
+    t.integer  "product_id", limit: 4
+    t.integer  "quantity",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",    limit: 4
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.string   "state",      limit: 20, default: "new"
   end
 
   create_table "products", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.float    "price"
-    t.boolean  "is_online",   default: false
-    t.string   "image"
-    t.boolean  "is_deleted",  default: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "category_id"
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.float    "price",       limit: 24
+    t.boolean  "is_online",   limit: 1,     default: false
+    t.string   "image",       limit: 255
+    t.boolean  "is_deleted",  limit: 1,     default: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.integer  "category_id", limit: 4
   end
 
   create_table "receipts", force: :cascade do |t|
-    t.string   "name"
-    t.string   "tel"
-    t.string   "address"
-    t.string   "city"
-    t.string   "country"
-    t.integer  "order_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255
+    t.string   "tel",        limit: 255
+    t.string   "address",    limit: 255
+    t.string   "city",       limit: 255
+    t.string   "country",    limit: 255
+    t.integer  "order_id",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "",    null: false
+    t.string   "encrypted_password",     limit: 255, default: "",    null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",                  default: false
-    t.string   "provider"
-    t.string   "uid"
+    t.boolean  "admin",                  limit: 1,   default: false
+    t.string   "provider",               limit: 255
+    t.string   "uid",                    limit: 255
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
