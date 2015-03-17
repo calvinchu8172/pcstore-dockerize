@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get 'view'
       get 'checkout'
       post 'add', path:'add/:id'
+      get 'clean'
       #checkout
   end
 

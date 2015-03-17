@@ -18,15 +18,25 @@ class CartsController < ApplicationController
   end
 
   def add
-    product = Product.find_by(id: params[:id])
+    if user_signed_in?
+      product = Product.find_by(id: params[:id])
 
-    if product
-      @cart.add_item(product.id)
-      session["cart"] = @cart.serialize
-      redirect_to :back, notice: "#{product.name} 已加入購物車！"
+      if product
+        @cart.add_item(product.id)
+        session["cart"] = @cart.serialize
+        redirect_to :back, notice: "#{product.name} 已加入購物車！"
+      else
+        redirect_to :back, notice: "查無此商品"
+      end
+
     else
-      redirect_to :back, notice: "查無此商品"
-    end
+      redirect_to new_user_session_path, notice: "請先登入才能購物喔！"
+    end 
+  end
+
+  def clean
+    session["cart"] = nil
+    redirect_to :back, notice: "購物車已清空"
   end
 
   private
