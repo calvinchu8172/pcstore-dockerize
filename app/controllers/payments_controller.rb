@@ -12,9 +12,9 @@ class PaymentsController < ApplicationController
     transaction.execute
     if transaction.ok?
       order.paid
-      redirect_to products_path, notice:'恭喜!'
+      redirect_to products_path, notice:'付款成功！謝謝您！歡迎再度光臨！'
     else
-      redirect_to products_path, notice:'付款發生錯誤!'
+      redirect_to products_path, notice:'付款發生錯誤！'
     end
   end
 end
