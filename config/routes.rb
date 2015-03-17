@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   resources :products, only:[:index, :show]
   resources :carts, only: [:create]
   resource :payment, only: [:new, :create]
+  resources :users do
+      post 'set_admin', :on => :collection # /users/set_admin
+                                          # member:  /users/123/set_admin
+      post 'remove_admin', :on => :collection                                    
+  end
+
 
   resource :cart, only:[:index] do
       get 'view'
