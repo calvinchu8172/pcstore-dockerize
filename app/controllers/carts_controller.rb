@@ -14,7 +14,11 @@ class CartsController < ApplicationController
   end
 
   def checkout
-    @order_form = OrderForm.new
+    if @cart.total_price == 0
+      redirect_to :back, notice: "購物車內無商品，無法結帳，請先購物！"
+    else
+      @order_form = OrderForm.new
+    end
   end
 
   def add
@@ -46,6 +50,10 @@ class CartsController < ApplicationController
 
   def save_receipt
     receipt = Receipt.new(cart_params[:receipt])
+
+    receipt.valid? #used to debug
+    Rails.logger.debug( receipt.errors.full_messages ) #used to debug
+
     receipt.order = @order
     receipt.save
   end
