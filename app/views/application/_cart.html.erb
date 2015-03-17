@@ -1,9 +1,9 @@
-<% unless @cart.try(:empty?) %>
+<% if @cart && @cart.any? %>
 <li>
   <%= link_to view_cart_path do %>
   購物車
     <%= content_tag :span, class:'badge' do%>
-      <%#= @cart.items.count %>
+      <%= @cart.items.count %>
     <% end %>
   <% end %>
 </li>
