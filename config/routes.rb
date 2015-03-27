@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   #devise
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  
+
   #frontend
   root 'static_pages#index'
   resources :products, only:[:index, :show]
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :users do
       post 'set_admin', :on => :collection # /users/set_admin
                                           # member:  /users/123/set_admin
-      post 'remove_admin', :on => :collection                                    
+      post 'remove_admin', :on => :collection
   end
 
 

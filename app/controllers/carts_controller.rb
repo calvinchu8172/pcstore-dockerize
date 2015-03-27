@@ -35,7 +35,7 @@ class CartsController < ApplicationController
 
     else
       redirect_to new_user_session_path, notice: "請先登入才能購物喔！"
-    end 
+    end
   end
 
   def clean
@@ -61,11 +61,11 @@ class CartsController < ApplicationController
   def save_order
     order_items = []
     @cart.items.each do |item|
-      hash = { product_id: item.product.id, 
+      hash = { product_id: item.product.id,
                quantity: item.quantity }
       order_items << OrderItem.new(hash)
     end
-    
+
     order = Order.new
     order.user = current_user
     order.order_items = order_items
