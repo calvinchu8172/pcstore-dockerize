@@ -4,6 +4,10 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+body{
+    background-color: #f8f8f8;
+}
+
 body,
 html {
     width: 100%;
@@ -31,7 +35,9 @@ h6 {
 }
 
 .intro-header {
-    /*padding-top: 50px;  If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    // margin: -20px -70px 0 -70px;
+    // width: 1280px;
+    // padding-top: 50px; If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content!
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
@@ -166,5 +172,7 @@ footer {
 }
 
 p.copyright {
+    text-align: center;
+    font-size: 14px;
     margin: 15px 0 0;
 }
