@@ -8,6 +8,12 @@ body{
     background-color: #f8f8f8;
 }
 
+.space{
+    height: 20px;
+    width: 100px;
+    margin:auto;
+}
+
 body,
 html {
     width: 100%;
@@ -35,8 +41,7 @@ h6 {
 }
 
 .intro-header {
-    // margin: -20px -70px 0 -70px;
-    // width: 1280px;
+    margin-top: -20px;
     // padding-top: 50px; If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content!
     padding-bottom: 50px;
     text-align: center;
