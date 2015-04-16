@@ -1,6 +1,6 @@
 module SoftDestroy
   def destroy
     self.is_deleted = true
-    save
+    save(validate: false)
   end
 end
