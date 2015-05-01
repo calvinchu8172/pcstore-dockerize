@@ -1,9 +1,9 @@
 <%=simple_form_for([:admin, @product]) do |f|%>
-  <%= f.input :name, label:'商品名稱'%>
-  <%= f.association :category, label:'商品分類'%>
-  <%= f.input :description, label:'商品說明'%>
-  <%= f.input :price, label:'商品售價'%>
-  <%= f.input :is_online, label:'是否上架'%>
-  <%= f.input :image, label:'商品圖片', as: :file%>
+  <%= f.input :name, label: t('Product_name') %>
+  <%= f.association :category, label: t('Category_name')%>
+  <%= f.input :description, label: t('Description')%>
+  <%= f.input :price, label: t('Price')%>
+  <%= f.input :is_online, label: t('Shelf') %>
+  <%= f.input :image, label: t('Picture'), as: :file%>
   <%= f.button :submit%>
 <%end%>

@@ -1,4 +1,4 @@
 <%=simple_form_for([:admin, @category]) do |f|%>
-  <%= f.input :name, label:'分類名稱'%>
+  <%= f.input :name, label: t("Category_name")%>
   <%= f.button :submit%>
 <%end%>

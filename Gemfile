@@ -47,6 +47,7 @@ gem 'braintree' #for paypal
 gem 'state_machine', :require => 'state_machine/core' #state machine
 gem 'state_machines-activerecord'
 gem 'mysql2'
+gem "rails-i18n"
 
 group :development, :test do
   gem 'better_errors' #better error message
