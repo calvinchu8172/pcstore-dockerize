@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.3.3'
+lock '>=3.3.3'
 
 `ssh-add` # need this to make key-forwarding work
 
