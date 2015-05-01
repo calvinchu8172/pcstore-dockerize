@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+  Fill_in: "Please fill in your billing information"
+  On_shelf: "On shelf"
+  Off_shelf: "Off shelf"
+  Shelf: "Go on Shelf?"
+  Make_sure: "Are you sure to delete??"

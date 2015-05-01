@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
 
   belongs_to :category
 
-  
+
 
   default_scope { where(is_deleted: false) }
 
@@ -21,7 +21,7 @@ class Product < ActiveRecord::Base
       # "未上架"
     # end
     # 以下為更簡潔的寫法
-    is_online ? "上架中" : "未上架"
+    is_online ? I18n.t("On_shelf") : I18n.t("Off_shelf")
   end
 
 end

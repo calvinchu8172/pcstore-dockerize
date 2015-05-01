@@ -1,9 +1,9 @@
 <table class="table table-hover table-condensed">
   <thead>
     <tr>
-      <td>項目</td>
-      <td>數量</td>
-      <td>價錢</td>
+      <td><%=t("Product_name")%></td>
+      <td><%=t("Quantity")%></td>
+      <td><%=t("Price")%></td>
     </tr>
   </thead>
   <% @cart.items.each do |item|%>
@@ -15,8 +15,8 @@
   <% end %>
   <tfoot>
     <tr>
-      <td colspan="2" class="test-right">總價</td>
+      <td colspan="2" class="test-right"><%=t("Total")%></td>
       <td><%= @cart.total_price %></td>
     </tr>
-  </tfoot>  
+  </tfoot>
 </table>

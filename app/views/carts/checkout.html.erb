@@ -1,15 +1,15 @@
-<h1>請填您的結帳資料</h1>
+<h1><%= t("Fill_in")%></h1>
 <%= render 'cart_items' %>
 <hr />
 
 <%= simple_form_for @order_form, url: carts_path do |f| %>
   <%= f.fields_for :receipt do |r| %>
-    <%= r.input :name, label:"收件人" %>
-    <%= r.input :tel, label:"電話" %>
-    <%= r.input :country, label:"國家" %>
-    <%= r.input :city, label:"城市" %>
-    <%= r.input :address, label:"地址" %>
+    <%= r.input :name, label: t("Receiver") %>
+    <%= r.input :tel, label: t("Phone") %>
+    <%= r.input :country, label: t("Country") %>
+    <%= r.input :city, label: t("City") %>
+    <%= r.input :address, label: t("Address") %>
   <% end %>
-  <%= f.submit '下一步', class:'btn btn-primary' %>
+  <%= f.submit "Next", class:'btn btn-primary' %>
 <% end %>
 <hr />
