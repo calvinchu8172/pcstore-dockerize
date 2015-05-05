@@ -2,7 +2,6 @@
 zh-TW:
   language: 語系
   Back_stage_system: 管理系統
-  Edit: 編輯
   Sign_in: 註冊
   Log_in: 登入
   Log_out: 登出
@@ -45,6 +44,18 @@ zh-TW:
   Off_shelf: 未上架
   Shelf: 是否上架？
   Make_sure: 確認刪除??
+
+  add_cart_successful: 已加入購物車！！
+  billing_successful: 訂單成立！
+  billing_failed: 訂單未傳送成功
+  no_this_product: 查無此商品
+  log_in_first: 請先登入才能購物喔！
+  cart_cleared: 購物車已清空
+  no_product_shopping_first: "購物車內無商品，無法結帳，請先購物！"
+  pay_successful: "付款成功！謝謝您！歡迎再度光臨！"
+  pay_failed: 付款發生錯誤！
+  pay: 付款
+
   date:
     abbr_day_names:
     - 周日

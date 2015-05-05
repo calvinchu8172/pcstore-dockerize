@@ -1,0 +1,17 @@
+<h1>Pay by Credit Card</h1>
+<p>This cash flow is using Braintree "Sandbox". It will NOT really pay. Just for trial.</p>
+<p>Card Number can be typed with 4111 1111 1111 1111.</p>
+<p>Expiration Date can be typed with any date later then current date.</p>
+
+<%= form_tag payment_path, method: :post do |f| %>
+  <div id="dropin"></div>
+  <input type="submit" value=<%=t("pay")%> class="btn btn-primary" />
+<% end %>
+
+<script>
+braintree.setup(
+  "<%= @client_token %>",
+  'dropin', {
+    container: 'dropin'
+  });
+</script>
