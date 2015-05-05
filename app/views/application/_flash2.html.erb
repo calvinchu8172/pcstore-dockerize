@@ -1,0 +1,40 @@
+<!-- 第二種方法為html內嵌在rails語法內 -->
+<% flash.each do |flash_type, message| %>
+  <%= content_tag :div, message.html_safe + ' <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'.html_safe, class: "alert alert-#{flash_type}" %>
+<% end %>
+
+
+<% if flash[:notice] || flash[:successs] %>
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <%= flash[:notice] %>
+      <%=flash[:successs] %>
+    </div>
+<% end %>
+
+<% if flash[:info] %>
+      <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash[:info] %>
+      </div>
+<% end %>
+
+<% if flash[:warning] %>
+      <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash[:warning] %>
+      </div>
+<% end %>
+
+<% if flash[:danger] || flash[:alert]%>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash[:danger] %>
+        <%= flash[:alert] %>
+      </div>
+<% end %>
+
+<p style="color: green"><%= flash[:notice] %></p>
+<p style="color: blue"><%= flash[:warning] %></p>
+<p style="color: red"><%= flash[:alert] %></p>
+<p style="color: #A09"><%= flash[:other] %></p>

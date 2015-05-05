@@ -7,15 +7,17 @@ class CartsController < ApplicationController
   def create
     if save_receipt && save_order
       session["cart"] = nil
-      redirect_to new_payment_path, notice: '訂單成立'
+      # redirect_to new_payment_path, notice: '訂單成立'
+      redirect_to new_payment_path, success: I18n.t("billing_successful")
     else
-      render :view, notice: '訂單未傳送成功'
+      # render :view, notice: '訂單未傳送成功'
+      render :view, danger: I18n.t("billing_failed")
     end
   end
 
   def checkout
     if @cart.total_price == 0
-      redirect_to :back, notice: "購物車內無商品，無法結帳，請先購物！"
+      redirect_to :back, info: I18n.t("no_product_shopping_first")
     else
       @order_form = OrderForm.new
     end
@@ -28,19 +30,25 @@ class CartsController < ApplicationController
       if product
         @cart.add_item(product.id)
         session["cart"] = @cart.serialize
-        redirect_to :back, notice: "#{product.name} 已加入購物車！"
+        redirect_to :back, success: "#{product.name}" + I18n.t("add_cart_successful")
+        # Another way of flash message for example.
+        # Rails onply provides :notice and :alert.
+        # If want to use costomize or fit in Bootstap. Please add add_flash_types :success, :info, :warning, :danger in application controller.
+        # flash[:notice] = "#{product.name}" + I18n.t("add_cart_successful")
+        # redirect_to :back
+
       else
-        redirect_to :back, notice: "查無此商品"
+        redirect_to :back, danger: I18n.t("no_this_product")
       end
 
     else
-      redirect_to new_user_session_path, notice: "請先登入才能購物喔！"
+      redirect_to new_user_session_path, info: I18n.t("log_in_first")
     end
   end
 
   def clean
     session["cart"] = nil
-    redirect_to :back, notice: "購物車已清空"
+    redirect_to :back, warning: I18n.t("cart_cleared")
   end
 
   private
