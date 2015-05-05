@@ -10,7 +10,7 @@ set :repo_url, 'https://github.com/calvinchu8172/pcstore'
 ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/deploy/pcstore'
+# set :deploy_to, '/home/deploy/pcstore' #move to deploy/production.rb and deploy/staging.rb
 
 # Default value for :scm is :git
 # set :scm, :git
