@@ -5,6 +5,6 @@ class Admin::BaseController < ApplicationController
 
   private
   def require_admin
-    redirect_to root_path, notice: '權限不足' unless current_user.is_admin?
+    redirect_to root_path, warning: I18n.t('no_authority') unless current_user.is_admin?
   end
 end

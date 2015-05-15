@@ -75,3 +75,9 @@ en:
   pay_successful: "Sucessfully paid! Thank you vary much! Welcome!"
   pay_failed: "Paid failed! Please try again!"
   pay: "Pay"
+
+  update_product_successful: "Update product successfully!"
+  add_product_successful: "Add product successfully!"
+  product_deleted: "This product has been deleted!"
+
+  no_authority: "There is no authority!"

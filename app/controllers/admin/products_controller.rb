@@ -15,16 +15,16 @@ class Admin::ProductsController < Admin::BaseController
   def update
     @product = Product.find_by(id: params[:id])
     if @product.update(product_params)
-      redirect_to admin_products_path, notice: '成功更新商品'
+      redirect_to admin_products_path, success: I18n.t('update_product_successful')
     else
       render :edit
-    end 
+    end
   end
 
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to admin_products_path, notice: '成功新增商品'
+      redirect_to admin_products_path, success: I18n.t('add_product_successful')
     else
       render :new
     end
@@ -33,7 +33,7 @@ class Admin::ProductsController < Admin::BaseController
   def destroy
     @product = Product.find_by(id: params[:id])
     @product.destroy
-    redirect_to admin_products_path, notice: '商品已刪除'
+    redirect_to admin_products_path, warning: I18n.t('product_deleted')
   end
 
   private

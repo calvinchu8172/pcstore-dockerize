@@ -37,3 +37,6 @@ zh-TW:
         subject: '重設密碼步驟'
       unlock_instructions:
         subject: '解鎖步驟'
+    omniauth_callbacks:
+      failure: "無法從 %{kind} 登入，因為 \"%{reason}\"。"
+      success: "成功從 %{kind} 帳戶登入。"

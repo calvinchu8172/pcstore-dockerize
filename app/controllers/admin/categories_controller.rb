@@ -14,16 +14,16 @@ class Admin::CategoriesController < Admin::BaseController
   def update
     @category = Category.find_by(id: params[:id])
     if @category.update(category_params)
-      redirect_to admin_categories_path, notice: '成功更新分類'
+      redirect_to admin_categories_path, success: I18n.t('update_category_successful')
     else
       render :edit
-    end 
+    end
   end
 
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to admin_categories_path, notice: '成功新增商品'
+      redirect_to admin_categories_path, success: I18n.t('add_category_successful')
     else
       render :new
     end
@@ -32,7 +32,7 @@ class Admin::CategoriesController < Admin::BaseController
   def destroy
     @category = Category.find_by(id: params[:id])
     @category.destroy
-    redirect_to admin_categories_path, notice: '商品已刪除'
+    redirect_to admin_categories_path, warning: I18n.t('category_deleted')
   end
 
   private

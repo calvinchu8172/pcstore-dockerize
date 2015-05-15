@@ -56,6 +56,16 @@ zh-TW:
   pay_failed: 付款發生錯誤！
   pay: 付款
 
+  update_product_successful: 成功更新商品！
+  add_product_successful: 成功新增商品！
+  product_deleted: 商品已刪除！
+
+  update_category_successful: 成功更新分類！
+  add_category_successful: 成功新增分類！
+  category_deleted: 分類已刪除！
+
+  no_authority: 權限不足！
+
   date:
     abbr_day_names:
     - 周日
