@@ -39,7 +39,6 @@ gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
 gem 'kaminari'
-gem 'puma' #better performance
 gem 'simple_form'
 gem 'country_select' #country_selector
 gem 'settingslogic'  #settings plugin
@@ -55,6 +54,7 @@ group :development, :test do
   gem 'better_errors' #better error message
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'pry'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
@@ -64,8 +64,6 @@ group :development, :test do
   # gem 'sqlite3' #change to mysql
   gem 'pry-rails' #irb replacement
   gem 'hirb-unicode' #better console looking
-  gem 'capistrano-rails' #deploy helper
-  gem 'capistrano-passenger'
 
 end
 
