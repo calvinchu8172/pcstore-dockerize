@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
 
 # Use SCSS for stylesheets
@@ -36,6 +36,7 @@ gem 'bootstrap-sass'
 gem "font-awesome-rails"
 gem 'devise'
 gem 'carrierwave'
+gem 'fog'
 gem 'mini_magick'
 gem 'kaminari'
 gem 'puma' #better performance
@@ -46,8 +47,9 @@ gem 'omniauth-facebook' #oauth for facebook
 gem 'braintree' #for paypal
 gem 'state_machine', :require => 'state_machine/core' #state machine
 gem 'state_machines-activerecord'
-gem 'mysql2'
+gem 'mysql2', '0.4.5'
 gem "rails-i18n"
+gem 'rails_config', '~> 0.4.2'
 
 group :development, :test do
   gem 'better_errors' #better error message
