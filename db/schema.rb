@@ -11,15 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311112406) do
+ActiveRecord::Schema.define(version: 20190614101817) do
+
+  create_table "access_tokens", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.text     "property",   limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "access_tokens", ["user_id"], name: "index_access_tokens_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.boolean  "is_enabled", limit: 1,   default: false
-    t.boolean  "is_deleted", limit: 1,   default: false
+    t.boolean  "is_enabled",             default: false
+    t.boolean  "is_deleted",             default: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
   end
+
+  create_table "omniauths", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.string   "provider",   limit: 255
+    t.string   "uid",        limit: 255
+    t.string   "image",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "omniauths", ["user_id"], name: "index_omniauths_on_user_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "order_id",   limit: 4
@@ -40,9 +60,9 @@ ActiveRecord::Schema.define(version: 20150311112406) do
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
     t.float    "price",       limit: 24
-    t.boolean  "is_online",   limit: 1,     default: false
+    t.boolean  "is_online",                 default: false
     t.string   "image",       limit: 255
-    t.boolean  "is_deleted",  limit: 1,     default: false
+    t.boolean  "is_deleted",                default: false
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
     t.integer  "category_id", limit: 4
@@ -72,7 +92,7 @@ ActiveRecord::Schema.define(version: 20150311112406) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",                  limit: 1,   default: false
+    t.boolean  "admin",                              default: false
     t.string   "provider",               limit: 255
     t.string   "uid",                    limit: 255
   end
@@ -80,4 +100,6 @@ ActiveRecord::Schema.define(version: 20150311112406) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "access_tokens", "users"
+  add_foreign_key "omniauths", "users"
 end

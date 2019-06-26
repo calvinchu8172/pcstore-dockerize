@@ -25,15 +25,24 @@
           </ul>
         </li>
 
-        <% unless user_signed_in? %>
-        <li><%= link_to t("Sign_in"), new_user_registration_path %></li>
-        <li><%= link_to t("Log_in"), new_user_session_path %></li>
+        <% if user_signed_in?%>
+          <li><%= link_to "SSO 登出", destroy_user_session_path, :method => :delete, :title => "Log out" %></li>
         <% else %>
+          <li><%= link_to "SSO 登入", user_sso_omniauth_authorize_path, :title => "Log in" %></li>
+        <% end %>
+
+        <% unless user_signed_in? %>
+          <li><%= link_to t("Sign_in"), new_user_registration_path %></li>
+          <li><%= link_to t("Log_in"), new_user_session_path %></li>
+        <% else %>
+
+
+
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%=current_user.email%><span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <% if current_user.is_admin?%>
-            <li><%= link_to t("Back_stage_system"), admin_dashboards_path %></li>
+              <li><%= link_to t("Back_stage_system"), admin_dashboards_path %></li>
             <%end%>
             <li><%= link_to t("Edit"), edit_user_registration_path %></li>
             <li class="divider"></li>

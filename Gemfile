@@ -32,23 +32,36 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'bootstrap-sass'
-gem "font-awesome-rails"
-gem 'devise'
-gem 'carrierwave'
-gem 'fog'
+
 gem 'mini_magick'
-gem 'kaminari'
-gem 'simple_form'
-gem 'country_select' #country_selector
 gem 'settingslogic'  #settings plugin
-gem 'omniauth-facebook' #oauth for facebook
 gem 'braintree' #for paypal
 gem 'state_machine', :require => 'state_machine/core' #state machine
 gem 'state_machines-activerecord'
 gem 'mysql2', '0.4.5'
 gem "rails-i18n"
 gem 'rails_config', '~> 0.4.2'
+gem 'strip_attributes'
+
+# ---------- #
+# - for UI - #
+# ---------- #
+gem 'country_select' #country_selector
+gem 'simple_form'
+gem 'kaminari'
+gem 'bootstrap-sass'
+gem "font-awesome-rails"
+gem 'carrierwave'
+gem 'fog'
+gem 'hamlit'
+
+# --------------------- #
+# - for Log In system - #
+# --------------------- #
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-oauth2', '1.3.1'
+gem 'omniauth-facebook' #oauth for facebook
 
 group :development, :test do
   gem 'better_errors' #better error message
@@ -60,7 +73,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'spring', '~> 2.0.2'
   # gem 'sqlite3' #change to mysql
   gem 'pry-rails' #irb replacement
   gem 'hirb-unicode' #better console looking

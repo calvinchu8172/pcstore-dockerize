@@ -1,12 +1,16 @@
 class User < ActiveRecord::Base
+  include UserOmniauth
+  include UserAccessToken
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-
-  devise :omniauthable, :omniauth_providers => [:facebook]
+         :recoverable, :rememberable, :trackable, :validatable, 
+         :omniauthable, :omniauth_providers => [:facebook, :sso]
 
   has_many :orders
+
+  strip_attributes
 
   def is_admin?
     admin
@@ -19,6 +23,10 @@ class User < ActiveRecord::Base
       # user.name = auth.info.name   # assuming the user model has a name
       # user.image = auth.info.image # assuming the user model has an image
     end
+  end
+
+  def name
+    self.email.split('@').first
   end
 
 end

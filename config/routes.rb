@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   #devise
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, controllers: { 
+    :omniauth_callbacks => "users/omniauth_callbacks" 
+  }
 
   #frontend
   root 'static_pages#index'
+  
   resources :products, only:[:index, :show]
   resources :carts, only: [:create]
   resource :payment, only: [:new, :create]
