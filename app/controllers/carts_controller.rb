@@ -42,7 +42,8 @@ class CartsController < ApplicationController
       end
 
     else
-      redirect_to new_user_session_path, info: I18n.t("log_in_first")
+      # redirect_to new_user_session_path, info: I18n.t("log_in_first")
+      redirect_to :back, info: I18n.t("log_in_first")
     end
   end
 
