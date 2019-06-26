@@ -1,10 +1,8 @@
 source 'https://rubygems.org'
 
-
-
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
-
+gem 'mysql2', '0.4.5'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -27,21 +25,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-
+gem 'strip_attributes'
 gem 'mini_magick'
 gem 'settingslogic'  #settings plugin
-gem 'braintree' #for paypal
 gem 'state_machine', :require => 'state_machine/core' #state machine
 gem 'state_machines-activerecord'
-gem 'mysql2', '0.4.5'
 gem "rails-i18n"
 gem 'rails_config', '~> 0.4.2'
-gem 'strip_attributes'
 
 # ---------- #
 # - for UI - #
@@ -62,6 +54,11 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-oauth2', '1.3.1'
 gem 'omniauth-facebook' #oauth for facebook
+
+# --------------- #
+# - for Payment - #
+# ----------------#
+gem 'braintree' #for paypal
 
 group :development, :test do
   gem 'better_errors' #better error message
