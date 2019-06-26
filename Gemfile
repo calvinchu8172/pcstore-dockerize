@@ -29,7 +29,6 @@ gem 'unicorn'
 
 gem 'strip_attributes'
 gem 'mini_magick'
-gem 'settingslogic'  #settings plugin
 gem 'state_machine', :require => 'state_machine/core' #state machine
 gem 'state_machines-activerecord'
 gem "rails-i18n"
