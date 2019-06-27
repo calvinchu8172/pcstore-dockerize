@@ -1,0 +1,12 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %td= t("Category")
+      %td
+
+  - @categories.each do |category|
+    %tr
+      %td= category.name
+      %td
+        = edit_button edit_admin_category_path(category)
+        = destroy_button admin_category_path(category)

@@ -1,0 +1,8 @@
+= simple_form_for([:admin, @product]) do |f|
+  = f.input :name, label: t('Product_name')
+  = f.association :category, label: t('Category_name')
+  = f.input :description, label: t('Description')
+  = f.input :price, label: t('Price')
+  = f.input :is_online, label: t('Shelf')
+  = f.input :image, label: t('Picture'), as: :file
+  = f.button :submit

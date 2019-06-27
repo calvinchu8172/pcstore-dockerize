@@ -1,9 +1,9 @@
 %table.table.table-hover.table-condensed
   %thead
     %tr
-      %td=t("Product_name")
-      %td=t("Quantity")
-      %td=t("Price")
+      %td= t("Product_name")
+      %td= t("Quantity")
+      %td= t("Price")
   - @cart.items.each do |item|
     %tr
       %td= item.product.name

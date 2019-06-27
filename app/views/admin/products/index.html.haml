@@ -1,0 +1,18 @@
+%table.table.table-hover
+  %thead>
+    %tr
+      %td= t("Product_name")
+      %td= t("Picture")
+      %td= t("Price")
+      %td= t("Status")
+      %td
+
+  - @products.each do |product|
+    %tr
+      %td= product.name
+      %td= image_tag product.image.normal
+      %td= product.price
+      %td= product.status
+      %td
+        = edit_button edit_admin_product_path(product)
+        = destroy_button admin_product_path(product)
