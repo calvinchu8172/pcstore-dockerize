@@ -1,0 +1,19 @@
+.row
+  .col-lg-12
+    .intro-message
+      %h1='Hello! PCstore!'
+      %h3='這是我的小商店'
+      %h3='這是Ruby on Rails作品展示'
+      %h3='購物車會過付款流程但並不會真付款，請放心玩'
+      %hr.intro-divider
+      %ul.list-inline.intro-social-buttons
+        %li
+          = link_to products_path, class: "btn btn-default btn-lg" do
+            = fa_icon "shopping-cart"
+            = '開始購物'
+          
+        %li
+          %a{ href:"https://github.com/calvinchu8172/pcstore", class: "btn btn-default btn-lg"} 
+            = fa_icon "github"
+            %span.network-name
+              = 'Github'

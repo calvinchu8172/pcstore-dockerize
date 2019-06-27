@@ -1,0 +1,18 @@
+.row
+  .col-lg-12
+    .intro-message
+      %h1='Hello! PCstore!'
+      %h3='This is my small shopping store made by Ruby on Rails.'
+      %h3='This website is using Paypal sandbox.'
+      %h3="You won't really pay for products, just relax to try."
+      %hr.intro-divider
+      %ul.list-inline.intro-social-buttons
+        %li
+          = link_to products_path, class: "btn btn-default btn-lg" do
+            = fa_icon "shopping-cart" 
+            = 'Go shopping!'
+        %li
+          %a{ href: "https://github.com/calvinchu8172/pcstore", class: "btn btn-default btn-lg"}
+            = fa_icon "github"
+            %span.network-name
+              = 'Github'

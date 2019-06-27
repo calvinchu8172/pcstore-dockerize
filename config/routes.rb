@@ -4,9 +4,10 @@ Rails.application.routes.draw do
     :omniauth_callbacks => "users/omniauth_callbacks" 
   }
 
-  #frontend
-  root 'static_pages#index'
-  
+  root 'welcome#index'
+  get "welcome" => "welcome#index"
+
+  #frontend  
   resources :products, only:[:index, :show]
   resources :carts, only: [:create]
   resource :payment, only: [:new, :create]

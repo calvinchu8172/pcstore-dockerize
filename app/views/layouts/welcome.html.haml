@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1, user-scalable=no" }
+    %title PCstore
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    %script{ src:"https://js.braintreegateway.com/v2/braintree.js" }
+
+  %body
+    = render 'navbar'
+    .intro-header
+      .container
+        .space
+        = render 'flash'
+        = yield
+    %footer
+      .container
+        .row
+          .col-lg-12      
+            %p.copyright.text-muted.small
+              = 'Copyright &copy; Calvin Chu 2015. All Rights Reserved'.html_safe

@@ -1,0 +1,15 @@
+%table.table.table-hover.table-condensed
+  %thead
+    %tr
+      %td=t("Product_name")
+      %td=t("Quantity")
+      %td=t("Price")
+  - @cart.items.each do |item|
+    %tr
+      %td= item.product.name
+      %td= item.quantity
+      %td= item.price
+  %tfoot
+    %tr
+      %td.test-right{ colspan: "2" }= t("Total")
+      %td= @cart.total_price
