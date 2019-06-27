@@ -1,0 +1,12 @@
+.col-md-4
+  .thumbnail
+    = image_tag product.image.normal
+    .caption
+      %h3= product.name
+      %p= product.description
+      %p
+        = t("Price")
+        = number_to_currency product.price
+      %p
+        = link_to t("Detail"), product, class:'btn btn-default'
+        = link_to t("Put_in_cart"), add_cart_path(product), method: :post, class:'btn btn-success'

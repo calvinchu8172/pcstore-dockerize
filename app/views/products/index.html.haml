@@ -1,0 +1,12 @@
+.row
+  .col-md-2
+    .list-group
+      %a.list-group-item.active
+        = t("Category")
+        - @categories.each do |category|
+          = link_to category.name, products_path(category: category), class: 'list-group-item'
+      = link_to t('All_products'), products_path, class: 'list-group-item'
+
+  .col-md-10
+    .row
+      = render @products

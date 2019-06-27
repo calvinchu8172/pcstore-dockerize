@@ -1,0 +1,13 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %td=t("Product_name")
+      %td=t("Picture")
+      %td=t("Detail")
+      %td=t("Price")
+
+  %tr
+    %td=@product.name
+    %td=image_tag @product.image.normal
+    %td=@product.description
+    %td=@product.price
