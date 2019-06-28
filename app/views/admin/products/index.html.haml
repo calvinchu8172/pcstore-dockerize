@@ -1,4 +1,4 @@
-%table.table.table-hover
+%table.table.table-hover.admin-products
   %thead>
     %tr
       %td= t("Product_name")
@@ -10,7 +10,7 @@
   - @products.each do |product|
     %tr
       %td= product.name
-      %td= image_tag product.image.normal
+      %td.product= image_tag product.image.normal
       %td= product.price
       %td= product.status
       %td
