@@ -1,12 +1,10 @@
 class Product < ActiveRecord::Base
-  include SoftDestroy
+  
   mount_uploader :image, ProductImageUploader
 
   belongs_to :category
 
-
-
-  default_scope { where(is_deleted: false) }
+  default_scope { where(is_recycled: false) }
 
   # 被include SoftDestroy所取代，SoftDestroy方法寫在concern內
   # def set_delete
@@ -23,5 +21,15 @@ class Product < ActiveRecord::Base
     # 以下為更簡潔的寫法
     is_online ? I18n.t("On_shelf") : I18n.t("Off_shelf")
   end
+
+  def recycle
+    self.is_recycled = true
+    self.save
+  end
+
+  def unrecycle
+    self.is_recycled = false
+    self.save
+  end  
 
 end

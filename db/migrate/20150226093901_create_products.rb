@@ -6,7 +6,7 @@ class CreateProducts < ActiveRecord::Migration
       t.float :price
       t.boolean :is_online, default: false
       t.string :image
-      t.boolean :is_deleted, default: false
+      t.boolean :is_recycled, default: false
 
       t.timestamps null: false
     end

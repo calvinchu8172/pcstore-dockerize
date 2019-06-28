@@ -6,7 +6,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to "PCstore", root_path, class: "navbar-brand"
+      = link_to t("pcstore"), root_path, class: "navbar-brand"
 
     .collapse.navbar-collapse{id: "bs-example-navbar-collapse-1"}
       %ul.nav.navbar-nav.navbar-right
@@ -29,7 +29,7 @@
               %span.caret
             %ul.dropdown-menu{ role: "menu" }
               - if current_user.is_admin?
-                %li= link_to t("enter_stage_system"), admin_dashboards_path
+                %li= link_to t("enter_stage_system"), admin_products_path
               %li= link_to t("Edit"), edit_user_registration_path
               %li.divider
               %li= link_to t("Log_out"), destroy_user_session_path, method: :delete, title: t("Log_out")

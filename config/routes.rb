@@ -29,7 +29,15 @@ Rails.application.routes.draw do
   #backend
   namespace :admin do
     resources :dashboards, only:[:index]
-    resources :products
+    resources :products do
+      collection do
+        get 'recycled'
+      end
+      member do
+        post 'recycle'
+        post 'unrecycle'
+      end
+    end
     resources :categories, except:[:show]
   end
 

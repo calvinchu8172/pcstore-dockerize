@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20190614101817) do
     t.float    "price",       limit: 24
     t.boolean  "is_online",                 default: false
     t.string   "image",       limit: 255
-    t.boolean  "is_deleted",                default: false
+    t.boolean  "is_recycled",               default: false
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
     t.integer  "category_id", limit: 4
@@ -90,6 +90,10 @@ ActiveRecord::Schema.define(version: 20190614101817) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
+    t.string   "confirmation_token",     limit: 255
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",                              default: false

@@ -21,6 +21,8 @@
 
 en:
   language: "Language"
+  pcstore: "PCStore"
+  pcstore_backstage: "PCStore Backstage"
   enter_stage_system: "Enter Stage System"
   enter_front_desk: "Back to Front Desk"
   Sign_in: "Sign in"
@@ -82,5 +84,10 @@ en:
   update_product_successful: "Update product successfully!"
   add_product_successful: "Add product successfully!"
   product_deleted: "This product has been deleted!"
+  product_recycled: "This product has been recycled!"
+  product_unrecycled: "This product has been recoverd from recycling box!"
+  recycled_products: "Recycled box"
+  recycle_product: "recycle"
+  recover_product: "Recover"
 
   no_authority: "There is no authority!"

@@ -1,6 +1,8 @@
 ---
 zh-TW:
   language: 語系
+  pcstore: "PCStore"
+  pcstore_backstage: "PCStore 後台"
   enter_stage_system: 後台
   enter_front_desk: 前台
   Sign_in: 註冊
@@ -62,6 +64,11 @@ zh-TW:
   update_product_successful: 成功更新商品！
   add_product_successful: 成功新增商品！
   product_deleted: 商品已刪除！
+  product_recycled: 商品已丟入回收桶！
+  product_unrecycled: 商品已自回收桶復原！
+  recycled_products: 商品回收桶
+  recycle_product: 回收
+  recover_product: 恢復商品
 
   update_category_successful: 成功更新分類！
   add_category_successful: 成功新增分類！

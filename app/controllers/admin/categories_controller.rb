@@ -31,7 +31,7 @@ class Admin::CategoriesController < Admin::BaseController
 
   def destroy
     @category = Category.find_by(id: params[:id])
-    @category.destroy
+    @category.soft_destroy
     redirect_to admin_categories_path, warning: I18n.t('category_deleted')
   end
 
