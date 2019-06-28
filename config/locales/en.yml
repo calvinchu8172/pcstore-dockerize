@@ -21,7 +21,8 @@
 
 en:
   language: "Language"
-  Back_stage_system: "Back Stage System"
+  enter_stage_system: "Enter Stage System"
+  enter_front_desk: "Back to Front Desk"
   Sign_in: "Sign in"
   Log_in: "Log in"
   Log_out: "Log out"
