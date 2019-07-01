@@ -1,7 +1,7 @@
 = render 'pagination'
 
 %table.table.table-hover.admin-products
-  %thead>
+  %thead
     %tr
       %td= t("Product_name")
       %td= t("Picture")
@@ -11,12 +11,14 @@
   - @products.each do |product|
     %tr
       %td= product.name
-      %td.product= image_tag product.image.normal
+      %td.product= link_to( image_tag(product.image.normal), '#', html_options = { "data-toggle": "modal", "data-target": "#myModal#{product.name}" })
       %td= product.price
       %td
         = product.status
         = edit_button edit_admin_product_path(product)
         = link_to t('recycle_product'), recycle_admin_product_path(product), method: :post, class:'btn btn-default btn-xs'
         = destroy_button admin_product_path(product)
+    
+    = render partial: 'products/model', locals: { product: product }
 
 = render 'pagination'

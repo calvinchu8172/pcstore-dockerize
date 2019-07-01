@@ -1,6 +1,6 @@
 .col-md-4
   .thumbnail.product
-    = image_tag product.image.normal
+    = link_to( image_tag(product.image.normal), '#', html_options = { "data-toggle": "modal", "data-target": "#myModal#{product.name}" })
     .caption
       %h3= product.name
       %p= product.description
@@ -8,5 +8,7 @@
         = t("Price")
         = number_to_currency product.price
       %p
-        = link_to t("Detail"), product, class:'btn btn-default'
-        = link_to t("Put_in_cart"), add_cart_path(product), method: :post, class:'btn btn-success'
+        = link_to t("Detail"), product, class: 'btn btn-default'
+        = link_to t("Put_in_cart"), add_cart_path(product), method: :post, class: 'btn btn-success'
+
+    = render partial: 'model', locals: { product: product }
