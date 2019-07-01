@@ -3,9 +3,10 @@ class Admin::ProductsController < Admin::BaseController
 
   def index
     if params[:category]
-      @products = Product.where(category_id: params[:category])
+      @products = Product.where(category_id: params[:category]).page(params[:page]).per(10)
+
     else
-      @products = Product.all
+      @products = Product.page(params[:page]).per(10)
     end 
   end
 

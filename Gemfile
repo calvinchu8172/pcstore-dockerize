@@ -40,6 +40,7 @@ gem 'rails_config', '~> 0.4.2'
 gem 'country_select' #country_selector
 gem 'simple_form'
 gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
 gem 'carrierwave'
