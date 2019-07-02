@@ -50,6 +50,21 @@ zh-TW:
   Shelf: 是否上架？
   Make_sure: 確認刪除??
 
+  product:
+    number: 商品編號
+    name: 商品名稱
+
+  order:
+    my_orders: 我的訂單
+    number: 訂單編號
+    date: 訂單日期
+    detail: 訂單細項
+    status: 訂單狀態
+    state:
+      new: 未付款
+      paid: 已付款
+      unknown: 未知
+
   add_cart_successful: 已加入購物車！！
   billing_successful: 訂單成立！
   billing_failed: 訂單未傳送成功

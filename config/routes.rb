@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       #checkout
   end
 
+  resources :orders
+
   #backend
   namespace :admin do
     resources :dashboards, only:[:index]

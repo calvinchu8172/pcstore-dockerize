@@ -69,6 +69,19 @@ en:
   Off_shelf: "Off shelf"
   Shelf: "Go on shelf?"
   Make_sure: "Are you sure to delete??"
+  back: Back
+  
+  order:
+    my_orders: My orders
+    number: Order No.
+    date: Order Date
+    detail: Order Detail
+    status: Order Status
+    state:
+      new: unpaid
+      paid: paid
+      unknown: unknown
+
 
   add_cart_successful: " added to cart successfully!"
   billing_successful: "Billing successfully!"

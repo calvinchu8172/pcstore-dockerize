@@ -25,4 +25,15 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def status
+    case self.state
+    when 'new'
+      I18n.t("order.state.new")
+    when 'paid'
+      I18n.t("order.state.paid")
+    else
+      I18n.t("order.state.unknown")
+    end
+  end
+
 end

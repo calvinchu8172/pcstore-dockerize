@@ -1,0 +1,26 @@
+%h1
+  = current_user.name
+  = t('order.my_orders')
+%hr
+
+.row
+  .col-md-12
+    %table.table.table-hover
+      %thead
+        %tr
+          %td= t("order.number")
+          %td= t("order.date")
+          %td= t("order.status")
+          %td= t("order.detail")
+
+      - @orders.each do |order|
+        %tr
+          %td= order.id
+          %td= order.created_at
+          %td= order.status
+          %td= link_to t('Detail'), order_path(order), class:'btn btn-default btn-xs'
+.row
+  .col-md-12
+    = link_to t('back'), :back, class: 'btn btn-default'
+
+
