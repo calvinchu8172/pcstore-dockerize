@@ -42,11 +42,12 @@ ActiveRecord::Schema.define(version: 20190614101817) do
   add_index "omniauths", ["user_id"], name: "index_omniauths_on_user_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
-    t.integer  "order_id",   limit: 4
-    t.integer  "product_id", limit: 4
-    t.integer  "quantity",   limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "order_id",     limit: 4
+    t.integer  "product_id",   limit: 4
+    t.string   "product_name", limit: 255
+    t.integer  "quantity",     limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "orders", force: :cascade do |t|

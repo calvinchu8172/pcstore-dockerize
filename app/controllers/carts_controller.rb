@@ -7,11 +7,13 @@ class CartsController < ApplicationController
 
   def create
     if save_receipt && save_order
+      @receipt.order_id = @order.id
+      @receipt.save
       session["cart"] = nil
-      # redirect_to new_payment_path, notice: '訂單成立'
+      
       redirect_to new_payment_path, success: I18n.t("billing_successful")
     else
-      # render :view, notice: '訂單未傳送成功'
+      
       render :view, danger: I18n.t("billing_failed")
     end
   end
@@ -59,27 +61,28 @@ class CartsController < ApplicationController
   end
 
   def save_receipt
-    receipt = Receipt.new(cart_params[:receipt])
+    @receipt = Receipt.new(cart_params[:receipt])
 
-    receipt.valid? #used to debug
-    Rails.logger.debug( receipt.errors.full_messages ) #used to debug
+    @receipt.valid? #used to debug
+    Rails.logger.debug( @receipt.errors.full_messages ) #used to debug
 
-    receipt.order = @order
-    receipt.save
+    @receipt.save
   end
 
   def save_order
     order_items = []
     @cart.items.each do |item|
       hash = { product_id: item.product.id,
-               quantity: item.quantity }
+               product_name: item.product.name,
+               quantity: item.quantity 
+             }
       order_items << OrderItem.new(hash)
     end
 
-    order = Order.new
-    order.user = current_user
-    order.order_items = order_items
-    order.save
+    @order = Order.new
+    @order.user = current_user
+    @order.order_items = order_items
+    @order.save
   end
 
 end
