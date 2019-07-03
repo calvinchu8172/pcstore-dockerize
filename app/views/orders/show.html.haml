@@ -2,6 +2,7 @@
   = t('order.number') + ': ' 
   = @order.id
   = t('order.detail')
+  = "( #{@order.status} )"
 %hr
 
 .row
@@ -16,7 +17,7 @@
 
       - @order.order_items.each do |item|
         %tr
-          %td= item.id
+          %td= item.product_id
           %td= item.product_name
           %td= item.quantity
           %td= item.product.price
@@ -50,4 +51,8 @@
 
 .row
   .col-md-12
-    = link_to t('back'), :back, class: 'btn btn-default'
+    = link_to t('back'), orders_path, class: 'btn btn-default'
+    - if @order.not_paid?
+      = link_to t('order.edit'), edit_order_path(@order), class: 'btn btn-default'
+      = link_to t('order.delete'), '#', class: 'btn btn-danger'
+      = link_to t('Check_out'), '#', class: 'btn btn-success'

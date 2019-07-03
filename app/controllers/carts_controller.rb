@@ -56,6 +56,7 @@ class CartsController < ApplicationController
   end
 
   private
+
   def cart_params
     params.require(:order_form).permit(receipt: [:name, :tel, :country, :city, :address])
   end

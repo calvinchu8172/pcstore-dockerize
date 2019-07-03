@@ -1,0 +1,64 @@
+%h1
+  = t('order.number') + ': ' 
+  = @order.id
+  = t('order.edit')
+%hr
+
+= simple_form_for @order, url: { controller: 'orders', action: 'update' }, method: :put do |f|
+  .row
+    .col-md-12
+      %table.table.table-hover
+        %thead
+          %tr
+            %td= t("product.number")
+            %td= t("product.name")
+            %td= t("Quantity")
+            %td= t("Price")
+        
+        - @order.order_items.each do |order_item|
+          %tr
+            %td= order_item.product_id
+            %td= order_item.product_name
+            %td
+              = f.fields_for :order_items, order_item do |p|
+                = p.input :quantity, wrapper_html: { class: 'item-quantity-field' }, label: false
+            %td= order_item.product.price
+
+        %tfoot
+          %tr
+            %td.test-right{ colspan: "3" }= t("Total")
+            %td= @order.total_price
+  %h1
+    = t('Receiver')
+  %hr
+
+  .row
+    .col-md-12
+      %table.table.table-hover
+        = f.fields_for :receipt, @order.receipt do |u|
+          %tr
+            %th= t('Receiver')
+            %td= u.input :name, label: false
+          %tr
+            %th= t('Phone')
+            %td= u.input :tel, label: false
+          %tr
+            %th= t('Country')
+            %td= u.input :country, label: false, format: :with_alpha2
+          %tr
+            %th= t('City')
+            %td= u.input :city, label: false
+          %tr
+            %th= t('Address')
+            %td= u.input :address, label: false
+
+  .row
+    .col-md-12
+      = link_to t('back'), :back, class: 'btn btn-default'
+      = f.submit t('confirm'), class: 'btn btn-primary'
+
+
+  
+    
+
+

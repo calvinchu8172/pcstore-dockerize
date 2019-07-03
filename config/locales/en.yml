@@ -70,6 +70,7 @@ en:
   Shelf: "Go on shelf?"
   Make_sure: "Are you sure to delete??"
   back: Back
+  confirm: Confirm
   
   order:
     my_orders: My orders
@@ -81,6 +82,9 @@ en:
       new: unpaid
       paid: paid
       unknown: unknown
+    update:
+      success: Update order successfully!
+    delete: Delete
 
 
   add_cart_successful: " added to cart successfully!"
@@ -90,7 +94,7 @@ en:
   log_in_first: "Please log in first!"
   cart_cleared: "Cart has been cleared"
   no_product_shopping_first: "There is no product, please go shopping first!"
-  pay_successful: "Sucessfully paid! Thank you vary much! Welcome!"
+  pay_successful: "%{payment} Dollars sucessfully paid! Thank you vary much! Welcome!"
   pay_failed: "Paid failed! Please try again!"
   pay: "Pay"
 

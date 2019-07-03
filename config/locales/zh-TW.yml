@@ -50,12 +50,14 @@ zh-TW:
   Shelf: 是否上架？
   Make_sure: 確認刪除??
   back: 返回
+  confirm: 確認
 
   product:
     number: 商品編號
     name: 商品名稱
 
   order:
+    edit: 編輯訂單
     my_orders: 我的訂單
     number: 訂單編號
     date: 訂單日期
@@ -65,6 +67,9 @@ zh-TW:
       new: 未付款
       paid: 已付款
       unknown: 未知
+    update:
+      success: 成功更新訂單
+    delete: 捨棄訂單
 
   add_cart_successful: 已加入購物車！！
   billing_successful: 訂單成立！
@@ -73,7 +78,7 @@ zh-TW:
   log_in_first: 請先登入才能購物喔！
   cart_cleared: 購物車已清空
   no_product_shopping_first: "購物車內無商品，無法結帳，請先購物！"
-  pay_successful: "付款成功！謝謝您！歡迎再度光臨！"
+  pay_successful: "%{payment} 元付款成功！謝謝您！歡迎再度光臨！"
   pay_failed: 付款發生錯誤！
   pay: 付款
 

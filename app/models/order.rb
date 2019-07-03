@@ -4,6 +4,8 @@ class Order < ActiveRecord::Base
   belongs_to :user
   has_one :receipt
   has_many :order_items
+  accepts_nested_attributes_for :order_items, allow_destroy: true
+  accepts_nested_attributes_for :receipt, allow_destroy: true
 
   def total_price
     order_items.inject(0) { |sum, item| sum + item.price }
@@ -33,6 +35,14 @@ class Order < ActiveRecord::Base
       I18n.t("order.state.paid")
     else
       I18n.t("order.state.unknown")
+    end
+  end
+
+  def not_paid?
+    if self.state == 'new'
+      true
+    else
+      false
     end
   end
 
