@@ -10,6 +10,10 @@ class Admin::ProductsController < Admin::BaseController
     end 
   end
 
+  def show
+    @product = Product.find_by(id: params[:id])
+  end
+
   def new
     @product = Product.new
   end
@@ -21,7 +25,7 @@ class Admin::ProductsController < Admin::BaseController
   def update
     @product = Product.find_by(id: params[:id])
     if @product.update(product_params)
-      redirect_to admin_products_path, success: I18n.t('update_product_successful')
+      redirect_to admin_product_path(@product), success: I18n.t('update_product_successful')
     else
       render :edit
     end

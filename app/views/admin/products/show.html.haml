@@ -1,0 +1,26 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %td=t("Product_name")
+      %td=t("Picture")
+      %td=t("Price")
+      %td=t("Status")      
+
+  %tr
+    %td=@product.name
+    %td.product= link_to( image_tag(@product.image.normal), '#', html_options = { "data-toggle": "modal", "data-target": "#myModal#{@product.name}" })
+    %td=@product.price
+    %td   
+      = @product.status
+      = edit_button edit_admin_product_path(@product)
+      = link_to t('recycle_product'), recycle_admin_product_path(@product), method: :post, class:'btn btn-default btn-xs'
+      = destroy_button admin_product_path(@product)
+  %tr
+    %td=t("Detail")
+    %td=@product.description
+    %td
+    %td
+
+= link_to t('back_to_products'), admin_products_path, class:'btn btn-default'
+
+= render partial: 'products/model', locals: { product: @product }
