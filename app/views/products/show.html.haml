@@ -1,20 +1,18 @@
 = simple_form_for :add, url: { controller: 'carts', action: 'add_many', id: @product.id }, method: :post do |f|
   %table.table.table-hover
-    %thead
-      %tr
-        %td=t("Product_name")
-        %td=t("Picture")
-        %td=t("Detail")
-        %td=t("Price")
-        %td='數量'
-        %td      
-
     %tr
-      %td=@product.name
-      %td=image_tag @product.image.normal
-      %td=@product.description
-      %td=@product.price
+      %th{ rowspan:"2" }= "#{t("Product_name")} #{@product.name}"
+      %td{ rowspan:"2" }= link_to( image_tag(@product.image.normal), '#', html_options = { "data-toggle": "modal", "data-target": "#myModal#{@product.name}" })
+      %th= "#{t("Price")} : #{@product.price}" 
+    %tr
       %td
+        = t("Quantity")
         = f.input :quantity, collection: 1..10, selected: 1, wrapper_html: { class: 'item-quantity-field' }, label: false
-        %td
-          = f.submit t('confirm'), class: 'btn btn-success'
+        = f.submit t('Put_in_cart'), class: 'btn btn-success'
+    %tr
+      %th= t("Detail")
+      %td= @product.description
+      %td
+
+
+  = render partial: 'model', locals: { product: @product }
