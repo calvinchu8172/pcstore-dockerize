@@ -86,6 +86,12 @@ en:
       success: Update order successfully!
     delete: Delete
 
+  payment:
+    credit_card: Pay by Credit Card
+    braintree_sandbox: This cash flow is using Braintree "Sandbox". It will NOT really pay. Just for trial.
+    card_number: Card Number can be typed with 4111 1111 1111 1111 .
+    expire_date: Expiration Date can be typed with any date later then current date.
+    total_price: Total price is %{total_price}
 
   add_cart_successful: " added to cart successfully!"
   billing_successful: "Billing successfully!"

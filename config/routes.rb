@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   #frontend  
   resources :products, only:[:index, :show]
   resources :carts, only: [:create]
-  resource :payment, only: [:new, :create]
+  resource :payment, only: [:create]
+  get 'payments/new/:order_id', to: 'payments#new'
+
   resources :users do
       post 'set_admin', :on => :collection # /users/set_admin
                                           # member:  /users/123/set_admin

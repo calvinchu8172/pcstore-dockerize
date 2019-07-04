@@ -11,7 +11,7 @@ class CartsController < ApplicationController
       @receipt.save
       session["cart"] = nil
       
-      redirect_to new_payment_path, success: I18n.t("billing_successful")
+      redirect_to({ controller: 'payments', action: 'new', order_id: @order.id }, success: I18n.t("billing_successful"))
     else
       
       render :view, danger: I18n.t("billing_failed")

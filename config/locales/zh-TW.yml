@@ -61,6 +61,7 @@ zh-TW:
     my_orders: 我的訂單
     number: 訂單編號
     date: 訂單日期
+    total_price: 總金額
     detail: 訂單細項
     status: 訂單狀態
     state:
@@ -71,6 +72,13 @@ zh-TW:
       success: 成功更新訂單
     delete: 捨棄訂單
 
+  payment:
+    credit_card: 刷卡
+    braintree_sandbox: 此金流為使用 Braintree Sandbox，並非真付款
+    card_number: Card Number 可用 4111 1111 1111 1111
+    expire_date: Expiration Date 請輸入晚於這個月
+    total_price: 總金額為 %{total_price}
+
   add_cart_successful: 已加入購物車！！
   billing_successful: 訂單成立！
   billing_failed: 訂單未傳送成功
@@ -78,7 +86,7 @@ zh-TW:
   log_in_first: 請先登入才能購物喔！
   cart_cleared: 購物車已清空
   no_product_shopping_first: "購物車內無商品，無法結帳，請先購物！"
-  pay_successful: "%{payment} 元付款成功！謝謝您！歡迎再度光臨！"
+  pay_successful: "%{total_price} 元付款成功！謝謝您！歡迎再度光臨！"
   pay_failed: 付款發生錯誤！
   pay: 付款
 

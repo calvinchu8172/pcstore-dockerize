@@ -1,0 +1,16 @@
+%h1=t("payment.credt_card")
+%p=t("payment.braintree_sandbox")
+%p=t("payment.card_number")
+%p=t("payment.expire_date")
+%p=t("payment.total_price", total_price: @order.total_price)
+
+= form_tag payment_path(order_id: @order.id), method: :post do |f|
+  %div{ id: "dropin" }
+  %input{ type: "submit", value: "#{t("pay")}", class: "btn btn-primary" }
+
+:javascript
+  braintree.setup(
+    "#{@client_token}",
+    'dropin', {
+      container: 'dropin'
+    });

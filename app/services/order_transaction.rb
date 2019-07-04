@@ -6,7 +6,7 @@ class OrderTransaction
 
   def execute
     @result = Braintree::Transaction.sale(
-      amount: 1,
+      amount: order.total_price,
       payment_method_nonce: nonce
       )
   end

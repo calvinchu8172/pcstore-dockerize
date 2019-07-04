@@ -10,15 +10,25 @@
         %tr
           %td= t("order.number")
           %td= t("order.date")
+          %td= t("order.total_price")
           %td= t("order.status")
           %td= t("order.detail")
 
       - @orders.each do |order|
-        %tr
-          %td= order.id
-          %td= order.created_at
-          %td= order.status
-          %td= link_to t('Detail'), order_path(order), class:'btn btn-default btn-xs'
+        - if order.not_paid?
+          %tr.warning
+            %td= order.id
+            %td= order.created_at
+            %td= order.total_price
+            %td= order.status
+            %td= link_to t('Detail'), order_path(order), class:'btn btn-warning btn-xs'
+        - else
+          %tr
+            %td= order.id
+            %td= order.created_at
+            %td= order.total_price
+            %td= order.status
+            %td= link_to t('Detail'), order_path(order), class:'btn btn-default btn-xs'
 .row
   .col-md-12
     = link_to t('back'), products_path, class: 'btn btn-default'
