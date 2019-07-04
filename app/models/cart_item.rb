@@ -10,6 +10,10 @@ class CartItem
     @quantity += 1
   end
 
+  def add_quantity(quantity)
+    @quantity += quantity
+  end
+
   def product
     Product.find_by(id: product_id)
   end

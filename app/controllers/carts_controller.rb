@@ -50,6 +50,24 @@ class CartsController < ApplicationController
     end
   end
 
+  def add_many
+    if user_signed_in?
+      product = Product.find_by(id: params[:id])
+
+      if product
+        @cart.add_more_item(product.id, params[:add][:quantity].to_i)
+        session["cart"] = @cart.serialize
+        redirect_to :back, success: "#{product.name}" + I18n.t("add_cart_successful")
+
+      else
+        redirect_to :back, danger: I18n.t("no_this_product")
+      end
+
+    else
+      redirect_to :back, info: I18n.t("log_in_first")
+    end
+  end
+
   def clean
     session["cart"] = nil
     redirect_to :back, warning: I18n.t("cart_cleared")

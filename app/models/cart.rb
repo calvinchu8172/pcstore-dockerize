@@ -27,6 +27,16 @@ class Cart
     end
   end
 
+  def add_more_item(product_id, quantity)
+    item = @items.find { |t| t.product_id == product_id }
+
+    if item
+      item.add_quantity(quantity)
+    else
+      @items << CartItem.new(product_id, quantity)
+    end
+  end
+
   def empty?
     @items.empty?
   end

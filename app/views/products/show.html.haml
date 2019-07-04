@@ -1,13 +1,20 @@
-%table.table.table-hover
-  %thead
-    %tr
-      %td=t("Product_name")
-      %td=t("Picture")
-      %td=t("Detail")
-      %td=t("Price")
+= simple_form_for :add, url: { controller: 'carts', action: 'add_many', id: @product.id }, method: :post do |f|
+  %table.table.table-hover
+    %thead
+      %tr
+        %td=t("Product_name")
+        %td=t("Picture")
+        %td=t("Detail")
+        %td=t("Price")
+        %td='數量'
+        %td      
 
-  %tr
-    %td=@product.name
-    %td=image_tag @product.image.normal
-    %td=@product.description
-    %td=@product.price
+    %tr
+      %td=@product.name
+      %td=image_tag @product.image.normal
+      %td=@product.description
+      %td=@product.price
+      %td
+        = f.input :quantity, collection: 1..10, selected: 1, wrapper_html: { class: 'item-quantity-field' }, label: false
+        %td
+          = f.submit t('confirm'), class: 'btn btn-success'
