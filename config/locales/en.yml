@@ -85,6 +85,7 @@ en:
     update:
       success: Update order successfully!
     delete: Delete
+    no_order: You have no order! Go shopping!
 
   payment:
     credit_card: Pay by Credit Card

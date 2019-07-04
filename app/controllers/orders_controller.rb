@@ -3,6 +3,9 @@ class OrdersController < ApplicationController
 
   def index
     @orders = current_user.orders
+    if @orders.count == 0
+      flash[:notice] = I18n.t('order.no_order')
+    end 
   end
 
   def show
