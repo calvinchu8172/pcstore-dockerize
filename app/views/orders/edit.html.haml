@@ -21,7 +21,7 @@
             %td= order_item.product_name
             %td
               = f.fields_for :order_items, order_item do |p|
-                = p.input :quantity, wrapper_html: { class: 'item-quantity-field' }, label: false
+                = p.input :quantity, input_html: { min: 1 }, wrapper_html: { class: 'item-quantity-field' }, label: false
             %td= order_item.product.price
 
         %tfoot
