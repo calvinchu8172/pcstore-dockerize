@@ -6,15 +6,14 @@ class CartsController < ApplicationController
   end
 
   def create
-    if save_receipt && save_order
-      @receipt.order_id = @order.id
-      @receipt.save
+    if save_order && save_receipt 
+      
       session["cart"] = nil
       
       redirect_to({ controller: 'payments', action: 'new', order_id: @order.id }, success: I18n.t("billing_successful"))
     else
-      
-      render :view, danger: I18n.t("billing_failed")
+
+      render :checkout, danger: I18n.t("billing_failed")
     end
   end
 
@@ -22,7 +21,8 @@ class CartsController < ApplicationController
     if @cart.total_price == 0
       redirect_to :back, info: I18n.t("no_product_shopping_first")
     else
-      @order_form = OrderForm.new
+      # @order_form = OrderForm.new
+      @receipt = Receipt.new
     end
   end
 
@@ -75,16 +75,16 @@ class CartsController < ApplicationController
 
   private
 
-  def cart_params
-    params.require(:order_form).permit(receipt: [:name, :tel, :country, :city, :address])
-  end
+
+  def receipt_params
+    params.require(:receipt).permit(:name, :tel, :country, :city, :address)
+  end  
 
   def save_receipt
-    @receipt = Receipt.new(cart_params[:receipt])
-
+    @receipt = Receipt.new(receipt_params)
     @receipt.valid? #used to debug
     Rails.logger.debug( @receipt.errors.full_messages ) #used to debug
-
+    @receipt.order_id = @order.id
     @receipt.save
   end
 

@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_order, except: :index
 
   def index
     @orders = current_user.orders
@@ -9,15 +10,12 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find( params[:id] ) 
   end
 
   def edit
-    @order = Order.find( params[:id] )
   end
 
   def update
-    @order = Order.find( params[:id] )
     if @order.update_attributes( order_params )
       redirect_to order_path(@order), success: I18n.t('order.update.success')
     else
@@ -29,6 +27,10 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:id, order_items_attributes: [:id, :quantity], receipt_attributes: [:name, :tel, :country, :city, :address])
+  end
+
+  def find_order
+    @order = Order.find( params[:id] )
   end
 
 end
