@@ -21,13 +21,13 @@
             %td= order_item.product_name
             %td
               = f.fields_for :order_items, order_item do |p|
-                = p.input :quantity, input_html: { min: 1 }, wrapper_html: { class: 'item-quantity-field' }, label: false
-            %td= order_item.product.price
+                = p.input :quantity, input_html: { min: 1, class: 'quantity' }, wrapper_html: { class: 'item-quantity-field' }, label: false
+            %td.price= order_item.product.price
 
         %tfoot
           %tr
             %td.test-right{ colspan: "3" }= t("Total")
-            %td= @order.total_price
+            %td{ id: 'total' }= @order.total_price
   %h1
     = t('Receiver')
   %hr
