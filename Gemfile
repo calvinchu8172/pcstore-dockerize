@@ -46,6 +46,7 @@ gem "font-awesome-rails"
 gem 'carrierwave'
 gem 'fog'
 gem 'hamlit'
+gem 'jquery-turbolinks'
 
 # --------------------- #
 # - for Log In system - #
