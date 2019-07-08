@@ -73,11 +73,15 @@ en:
   confirm: Confirm
   
   order:
+    title: Order
+    all: Al Orders
+    edit: Edit Order
     my_orders: My orders
     number: Order No.
     date: Order Date
     detail: Order Detail
     status: Order Status
+    owner: Owner
     state:
       new: unpaid
       paid: paid

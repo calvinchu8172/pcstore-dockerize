@@ -8,9 +8,9 @@
         = link_to category.name, products_path(category: category), class: 'list-group-item'
 
   .col-md-10
-    = render 'pagination'
+    = render partial: 'pagination', locals: { page: @products }
     .row
       = render @products
-    = render 'pagination'
+    = render partial: 'pagination', locals: { page: @products }
 
 

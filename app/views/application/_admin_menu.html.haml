@@ -8,3 +8,5 @@
   %a.list-group-item.active= t("Category")
   = link_to t("All_categories"), admin_categories_path, class: 'list-group-item'
   = link_to t("Add_category"), new_admin_category_path, class: 'list-group-item list-group-item-info'
+  %a.list-group-item.active= t("order.title")
+  = link_to t("order.all"), admin_orders_path, class: 'list-group-item'

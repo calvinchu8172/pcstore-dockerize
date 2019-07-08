@@ -1,0 +1,40 @@
+%h1
+  = t('order.all')
+%hr
+
+= render partial: 'pagination', locals: { page: @orders }
+
+.row
+  .col-md-12
+    %table.table.table-hover
+      %thead
+        %tr
+          %td= t("order.number")
+          %td= t("order.date")
+          %td= t("order.owner")
+          %td= t("order.total_price")
+          %td= t("order.status")
+          / %td= t("order.detail")
+
+      - @orders.each do |order|
+        - if order.not_paid?
+          %tr.warning
+            %td= order.id
+            %td= order.created_at
+            %td= order.user.email
+            %td= order.total_price
+            %td= order.status
+            / %td= link_to t('Detail'), order_path(order), class:'btn btn-warning btn-xs'
+        - else
+          %tr
+            %td= order.id
+            %td= order.created_at
+            %td= order.user.email
+            %td= order.total_price
+            %td= order.status
+            / %td= link_to t('Detail'), order_path(order), class:'btn btn-default btn-xs'
+.row
+  .col-md-12
+    = link_to t('back'), admin_products_path, class: 'btn btn-default'
+
+

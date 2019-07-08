@@ -1,4 +1,4 @@
-= render 'pagination'
+= render partial: 'pagination', locals: { page: @products }
 
 %table.table.table-hover.admin-products
   %thead
@@ -22,4 +22,4 @@
     
     = render partial: 'products/model', locals: { product: product }
 
-= render 'pagination'
+= render partial: 'pagination', locals: { page: @products }

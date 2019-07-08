@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       end
     end
     resources :categories, except:[:show]
+    resources :orders
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
