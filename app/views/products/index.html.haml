@@ -8,6 +8,23 @@
         = link_to category.name, products_path(category: category), class: 'list-group-item'
 
   .col-md-10
+    .row
+      .col-md-6
+        .ransack-btn-group
+          = search_form_for @q, html: { class: 'input-group' } do |f|
+            = f.input :name_or_description_cont, class: 'form-control', placeholder: t("search"), label: false
+            %span.input-group-btn
+              = f.submit t("search"), class: 'btn btn-default'
+
+      .col-md-6
+        .btn-group.ransack-btn-group
+          .btn.btn-default
+            = sort_link( @q, :name, t('sort.name') )
+          .btn.btn-default
+            = sort_link( @q, :price, t('sort.price') )
+          .btn.btn-default
+            = sort_link( @q, :created_at, t('sort.date') )
+
     = render partial: 'pagination', locals: { page: @products }
     .row
       = render @products

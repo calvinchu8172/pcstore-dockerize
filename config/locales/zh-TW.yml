@@ -51,6 +51,11 @@ zh-TW:
   Make_sure: 確認刪除??
   back: 返回
   confirm: 確認
+  sort:
+    name: 名稱排序
+    price: 價格排序
+    date: 上架時間
+  search: 搜尋
 
   product:
     number: 商品編號

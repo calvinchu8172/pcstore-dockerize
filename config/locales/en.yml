@@ -71,6 +71,11 @@ en:
   Make_sure: "Are you sure to delete??"
   back: Back
   confirm: Confirm
+  sort:
+    name: Sort by name
+    price: Sort by price
+    date: Sort by date
+  search: Search
   
   order:
     title: Order

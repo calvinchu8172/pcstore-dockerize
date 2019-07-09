@@ -46,6 +46,7 @@ gem "font-awesome-rails"
 gem 'carrierwave'
 gem 'fog'
 gem 'hamlit'
+gem 'ransack', '1.8.10'
 
 # --------------------- #
 # - for Log In system - #
