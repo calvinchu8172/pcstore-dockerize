@@ -101,6 +101,7 @@ class CartsController < ApplicationController
     @order = Order.new
     @order.user = current_user
     @order.order_items = order_items
+    @order.sum = @order.total_price
     @order.save
   end
 

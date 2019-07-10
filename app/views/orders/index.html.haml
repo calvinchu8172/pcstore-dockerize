@@ -4,14 +4,31 @@
 %hr
 
 .row
-  .col-md-12
+  .col-md-2.col-sm-12.col-xs-12
+    = search_form_for @q, html: { class: 'orders-form' } do |f|
+      .form-group
+        = f.input :id_eq, placeholder: t("search.number"), placeholder: t("search.number"), label: t("order.number"), required: false, wrapper_html: { class: 'd-flex' }
+        = f.input :created_at_gteq, as: :datetime, label: t("search.date.start"), required: false, wrapper_html: { class: 'd-flex' }
+        = f.input :created_at_lteq, as: :datetime, label: t("search.date.end"), required: false, wrapper_html: { class: 'd-flex' }
+      .form-group
+        = f.input :sum_gteq, placeholder: 'ex: 100', label: t("search.sum.start"), required: false, wrapper_html: { class: 'd-flex' }
+        = f.input :sum_lteq, placeholder: 'ex: 1000', label: t("search.sum.end"), required: false, wrapper_html: { class: 'd-flex' }
+      .form-group
+        = f.input :state_eq, as: :select, collection: [[t("order.state.new"), 'new'], [t("order.state.paid"), 'paid']], include_blank: true, label: t("order.status"), required: false, wrapper_html: { class: 'd-flex' }
+      .btn-group
+        = link_to t("search.clear"), request.path, class: "btn btn-default"
+        = f.submit t("search.search"), class: 'btn btn-primary'
+        
+
+  .col-md-10.col-sm-12.col-xs-12
+    = render partial: 'pagination', locals: { page: @orders }
     %table.table.table-hover
       %thead
         %tr
-          %td= t("order.number")
-          %td= t("order.date")
-          %td= t("order.total_price")
-          %td= t("order.status")
+          %td= sort_link( @q, :id, t("order.number"))
+          %td= sort_link( @q, :created_at, t("order.date"))
+          %td= sort_link( @q, :sum, t("order.total_price"))
+          %td= sort_link( @q, :state, t("order.status"))
           %td= t("order.detail")
 
       - @orders.each do |order|
@@ -29,8 +46,11 @@
             %td= order.total_price
             %td= order.status
             %td= link_to t('Detail'), order_path(order), class:'btn btn-default btn-xs'
+
+    = render partial: 'pagination', locals: { page: @orders }
+
 .row
   .col-md-12
-    = link_to t('back'), products_path, class: 'btn btn-default'
+    = link_to t('back_to_products'), products_path, class: 'btn btn-default'
 
 

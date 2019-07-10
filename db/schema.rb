@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190614101817) do
+ActiveRecord::Schema.define(version: 20190709115111) do
 
   create_table "access_tokens", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20190614101817) do
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.string   "state",      limit: 20, default: "new"
+    t.float    "sum",        limit: 24
   end
 
   create_table "products", force: :cascade do |t|

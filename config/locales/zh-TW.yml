@@ -55,7 +55,17 @@ zh-TW:
     name: 名稱排序
     price: 價格排序
     date: 上架時間
-  search: 搜尋
+  search:
+    search: 搜尋
+    clear: 清除
+    number: 會忽視其他搜尋條件
+    sum:
+      start: 總金額起
+      end: 總金額迄
+    date:
+      start: 日期起
+      end: 日期迄
+
 
   product:
     number: 商品編號
@@ -79,7 +89,7 @@ zh-TW:
     update:
       success: 成功更新訂單
     delete: 捨棄訂單
-    no_order: 您目前無訂單，快去購物吧!
+    no_order: 無訂單。
 
   payment:
     credit_card: 刷卡

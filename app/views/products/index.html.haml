@@ -12,9 +12,11 @@
       .col-md-6
         .ransack-btn-group
           = search_form_for @q, html: { class: 'input-group' } do |f|
-            = f.input :name_or_description_cont, class: 'form-control', placeholder: t("search"), label: false
+            = f.input :name_or_description_cont, html_options: { class: 'form-control', placeholder: t("search")}, label: false
             %span.input-group-btn
-              = f.submit t("search"), class: 'btn btn-default'
+              = f.submit t("search.search"), class: 'btn btn-primary'
+              = link_to t("search.clear"), request.path, class: "btn btn-default"
+              
 
       .col-md-6
         .btn-group.ransack-btn-group

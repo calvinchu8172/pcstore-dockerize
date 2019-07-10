@@ -13,7 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
-@import "theme"
+// @import "theme";
+
+body{
+    background-color: #f8f8f8;
+    padding-top: 70px; //fixed navbar on top
+}
+
+.space{
+    height: 20px;
+    width: 100px;
+    margin:auto;
+}
+

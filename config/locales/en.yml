@@ -75,7 +75,20 @@ en:
     name: Sort by name
     price: Sort by price
     date: Sort by date
-  search: Search
+  search: 
+    search: Search
+    clear: Clear
+    number: Will just search No.
+    sum:
+      start: Total Payment from
+      end: to
+    date:
+      start: Date start from
+      end: to
+
+  product:
+    number: Product No.
+    name: Product name
   
   order:
     title: Order
@@ -84,6 +97,7 @@ en:
     my_orders: My orders
     number: Order No.
     date: Order Date
+    total_price: Total
     detail: Order Detail
     status: Order Status
     owner: Owner
@@ -94,7 +108,7 @@ en:
     update:
       success: Update order successfully!
     delete: Delete
-    no_order: You have no order! Go shopping!
+    no_order: No order.
 
   payment:
     credit_card: Pay by Credit Card
