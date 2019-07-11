@@ -1,25 +1,46 @@
-= render partial: 'pagination', locals: { page: @products }
+.row
+  .col-md-2.col-sm-12.col-xs-12
+    = search_form_for @q, url: admin_products_path, html: { class: 'orders-form' } do |f|
+      .form-group
+        = f.input :id_eq, placeholder: t("search.number"), label: t("product.number"), required: false, wrapper_html: { class: 'd-flex' }
+        = f.input :name_eq, placeholder: t("product.name"), label: t("product.name"), required: false, wrapper_html: { class: 'd-flex' }
+      .form-group
+        = f.input :is_online_eq, as: :select, collection: [[t("On_shelf"), true], [t("Off_shelf"), false]], include_blank: true, label: t("search.on_shelf"), required: false, wrapper_html: { class: 'd-flex' }
+      .form-group
+        = f.input :created_at_gteq, as: :datetime, label: t("search.date.start"), default: Product.first.created_at, required: false, wrapper_html: { class: 'd-flex' }
+        = f.input :created_at_lteq, as: :datetime, label: t("search.date.end"), default: Time.zone.now, required: false, wrapper_html: { class: 'd-flex' }
+      .form-group
+        = f.input :price_gteq, placeholder: 'ex: 100', label: t("search.price.start"), required: false, wrapper_html: { class: 'd-flex' }
+        = f.input :price_lteq, placeholder: 'ex: 1000', label: t("search.price.end"), required: false, wrapper_html: { class: 'd-flex' }
+      .btn-group
+        = link_to t("search.clear"), request.path, class: "btn btn-default"
+        = f.submit t("search.search"), class: 'btn btn-primary'
 
-%table.table.table-hover.admin-products
-  %thead
-    %tr
-      %td= t("Product_name")
-      %td= t("Picture")
-      %td= t("Price")
-      %td= t("Status")
+  .col-md-10.col-sm-12.col-xs-12
+    = render partial: 'pagination', locals: { page: @products }
 
-  - @products.each do |product|
-    %tr
-      %td= product.name
-      %td.product= link_to( image_tag(product.image.normal), '#', html_options = { "data-toggle": "modal", "data-target": "#myModal#{product.name}" })
-      %td= product.price
-      %td
-        = product.status
-        = link_to t('Detail'), admin_product_path(product), class:'btn btn-default btn-xs'
-        = edit_button edit_admin_product_path(product)
-        = link_to t('recycle_product'), recycle_admin_product_path(product), method: :post, class:'btn btn-default btn-xs'
-        = destroy_button admin_product_path(product)
-    
-    = render partial: 'products/model', locals: { product: product }
+    %table.table.table-hover.admin-products
+      %thead
+        %tr
+          %td= sort_link( @q, :id, t("product.number"))
+          %td= sort_link( @q, :name, t("Product_name"))
+          %td= t("Picture")
+          %td= sort_link( @q, :price, t("Price"))
+          %td= sort_link( @q, :is_online, t("Status"))
 
-= render partial: 'pagination', locals: { page: @products }
+      - @products.each do |product|
+        %tr
+          %td= product.id
+          %td= product.name
+          %td.product= link_to( image_tag(product.image.normal), '#', html_options = { "data-toggle": "modal", "data-target": "#myModal#{product.id}" })
+          %td= product.price
+          %td
+            = product.status
+            = link_to t('Detail'), admin_product_path(product), class:'btn btn-default btn-xs'
+            = edit_button edit_admin_product_path(product)
+            = link_to t('recycle_product'), recycle_admin_product_path(product), method: :post, class:'btn btn-default btn-xs'
+            = destroy_button admin_product_path(product)
+        
+        = render partial: 'products/model', locals: { product: product }
+
+    = render partial: 'pagination', locals: { page: @products }

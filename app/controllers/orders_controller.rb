@@ -3,7 +3,6 @@ class OrdersController < ApplicationController
   before_action :find_order, except: :index
 
   def index
-
     @q = current_user.orders.ransack(params[:q])
     @data = @q.result(distinct: true)
     @orders = @data.page(params[:page]).per(20)

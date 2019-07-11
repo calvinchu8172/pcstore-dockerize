@@ -58,14 +58,17 @@ zh-TW:
   search:
     search: 搜尋
     clear: 清除
-    number: 會忽視其他搜尋條件
+    number: 搜尋編號
     sum:
       start: 總金額起
       end: 總金額迄
+    price:
+      start: 售價起
+      end: 售價迄
     date:
       start: 日期起
       end: 日期迄
-
+    on_shelf: 是否上架？
 
   product:
     number: 商品編號

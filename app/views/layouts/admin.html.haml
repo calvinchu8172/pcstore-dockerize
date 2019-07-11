@@ -3,8 +3,8 @@
   %head
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1, user-scalable=no" }
     %title PCstore Admin
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
     = csrf_meta_tags
     %script{ src:"https://js.braintreegateway.com/v2/braintree.js" }
 
@@ -12,8 +12,4 @@
     = render 'admin_navbar'
     .container
       = render 'flash'
-      .row
-        .col-md-2
-          = render 'admin_menu'
-        .col-md-10
-          = yield
+      = yield

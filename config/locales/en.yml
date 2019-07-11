@@ -78,13 +78,17 @@ en:
   search: 
     search: Search
     clear: Clear
-    number: Will just search No.
+    number: Search Number
     sum:
       start: Total Payment from
+      end: to
+    price:
+      start: Price from
       end: to
     date:
       start: Date start from
       end: to
+    on_shelf: On shelf?
 
   product:
     number: Product No.

@@ -2,11 +2,14 @@ class Admin::ProductsController < Admin::BaseController
   before_action :all_categroies
 
   def index
+    @q = Product.ransack(params[:q])
+    @data = @q.result(distinct: true)
+
     if params[:category]
-      @products = Product.where(category_id: params[:category]).page(params[:page]).per(10)
+      @products = @data.where(category_id: params[:category]).page(params[:page]).per(10)
 
     else
-      @products = Product.page(params[:page]).per(10)
+      @products = @data.page(params[:page]).per(10)
     end 
   end
 
