@@ -7,3 +7,23 @@
   }
 
 }
+
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .orders-form {
+    label {
+      min-width: 70px;
+    }
+    .d-flex {
+      display: flex;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+
+}
+
+@media (max-width: 321px) {
+}
+
