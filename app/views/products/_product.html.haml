@@ -1,6 +1,6 @@
 .col-md-4.col-sm-6.col-xs-12
   .thumbnail.product
-    = link_to( image_tag(product.image.normal), '#', html_options = { "data-toggle": "modal", "data-target": "#myModal#{product.name}" })
+    = link_to( image_tag(product.image.normal), '#', html_options = { "data-toggle": "modal", "data-target": "#myModal#{product.id}" })
     .caption
       %h3= product.name
       %p= product.description

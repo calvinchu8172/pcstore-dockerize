@@ -8,7 +8,7 @@
 
   %tr
     %td=@product.name
-    %td.product= link_to( image_tag(@product.image.normal), '#', html_options = { "data-toggle": "modal", "data-target": "#myModal#{@product.name}" })
+    %td.product= link_to( image_tag(@product.image.normal), '#', html_options = { "data-toggle": "modal", "data-target": "#myModal#{@product.id}" })
     %td=@product.price
     %td   
       = @product.status

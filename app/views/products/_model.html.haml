@@ -1,11 +1,11 @@
-.modal.fade{ id: "myModal#{product.name}", tabindex: "-1", role: "dialog", "aria-labelledby": "myModalLabel#{product.name}"}
+.modal.fade{ id: "myModal#{product.id}", tabindex: "-1", role: "dialog", "aria-labelledby": "myModalLabel#{product.id}"}
   .modal-dialog{ role: "document" }
     .modal-content
       .modal-header
         %button{ type: "button", class: "close", "data-dismiss": "modal", "aria-label": "Close" }
           %span{ "aria-hidden": "true"}
             = '&times;'.html_safe
-        %h4.modal-title{ id: "myModalLabel#{product.name}" }
+        %h4.modal-title{ id: "myModalLabel#{product.id}" }
           = product.name
       .modal-body.modal-image
         = image_tag(product.image)

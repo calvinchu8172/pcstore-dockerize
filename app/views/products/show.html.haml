@@ -2,7 +2,7 @@
   %table.table.table-hover
     %tr
       %th{ rowspan:"2" }= "#{t("Product_name")} #{@product.name}"
-      %td{ rowspan:"2" }= link_to( image_tag(@product.image.normal), '#', html_options = { "data-toggle": "modal", "data-target": "#myModal#{@product.name}" })
+      %td{ rowspan:"2" }= link_to( image_tag(@product.image.normal), '#', html_options = { "data-toggle": "modal", "data-target": "#myModal#{@product.id}" })
       %th= "#{t("Price")} : #{@product.price}" 
     %tr
       %td
