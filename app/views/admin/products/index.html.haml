@@ -1,29 +1,18 @@
 .row
-  .col-md-2.col-sm-12.col-xs-12
-    = search_form_for @q, url: admin_products_path, html: { class: 'orders-form' } do |f|
-      .form-group
-        = f.input :id_eq, placeholder: t("search.number"), label: t("product.number"), required: false, wrapper_html: { class: 'd-flex' }
-        = f.input :name_eq, placeholder: t("product.name"), label: t("product.name"), required: false, wrapper_html: { class: 'd-flex' }
-      .form-group
-        = f.input :is_online_eq, as: :select, collection: [[t("On_shelf"), true], [t("Off_shelf"), false]], include_blank: true, label: t("search.on_shelf"), required: false, wrapper_html: { class: 'd-flex' }
-      .form-group
-        = f.input :created_at_gteq, as: :datetime, label: t("search.date.start"), default: Product.first.created_at, required: false, wrapper_html: { class: 'd-flex' }
-        = f.input :created_at_lteq, as: :datetime, label: t("search.date.end"), default: Time.zone.now, required: false, wrapper_html: { class: 'd-flex' }
-      .form-group
-        = f.input :price_gteq, placeholder: 'ex: 100', label: t("search.price.start"), required: false, wrapper_html: { class: 'd-flex' }
-        = f.input :price_lteq, placeholder: 'ex: 1000', label: t("search.price.end"), required: false, wrapper_html: { class: 'd-flex' }
-      .btn-group
-        = link_to t("search.clear"), request.path, class: "btn btn-default"
-        = f.submit t("search.search"), class: 'btn btn-primary'
+  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+    %h1= @title
 
-  .col-md-10.col-sm-12.col-xs-12
+  .col-lg-2.col-md-2.col-sm-12.col-xs-12
+    = render partial: 'search_product', locals: { url: admin_products_path, default_created_at: Product.first.created_at }
+
+  .col-lg-10.col-md-10.col-sm-12.col-xs-12
     = render partial: 'pagination', locals: { page: @products }
 
     %table.table.table-hover.admin-products
       %thead
         %tr
           %td= sort_link( @q, :id, t("product.number"))
-          %td= sort_link( @q, :name, t("Product_name"))
+          %td= sort_link( @q, :name, t("product.name"))
           %td= t("Picture")
           %td= sort_link( @q, :price, t("Price"))
           %td= sort_link( @q, :is_online, t("Status"))

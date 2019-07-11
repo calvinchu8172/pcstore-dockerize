@@ -7,9 +7,10 @@ class Admin::ProductsController < Admin::BaseController
 
     if params[:category]
       @products = @data.where(category_id: params[:category]).page(params[:page]).per(10)
-
+      @title = I18n.t('product.category', category: Category.find(params[:category]).name)
     else
       @products = @data.page(params[:page]).per(10)
+      @title = I18n.t('product.all')
     end 
   end
 
@@ -62,7 +63,11 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def recycled
-    @products = Product.unscoped.where(is_recycled: true)
+    recycled_products = Product.unscoped.where(is_recycled: true)
+
+    @q = recycled_products.ransack(params[:q])
+    @data = @q.result(distinct: true)
+    @products = @data.page(params[:page]).per(10)
   end
 
   private

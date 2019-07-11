@@ -1,17 +1,33 @@
-%table.table.table-hover.admin-products
-  %thead>
-    %tr
-      %td= t("Product_name")
-      %td= t("Picture")
-      %td= t("Price")
-      %td= t("Status")
+.row
+  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+    %h1= t('product.recycled')
 
-  - @products.each do |product|
-    %tr
-      %td= product.name
-      %td.product= image_tag product.image.normal
-      %td= product.price
-      %td
-        = product.status
-        = link_to t('recover_product'), unrecycle_admin_product_path(product), method: :post, class:'btn btn-default btn-xs'
-        = destroy_button admin_product_path(product)
+  .col-lg-2.col-md-2.col-sm-12.col-xs-12
+    = render partial: 'search_product', locals: { url: recycled_admin_products_path, default_created_at: Product.first.created_at }
+
+  .col-lg-10.col-md-10.col-sm-12.col-xs-12
+    = render partial: 'pagination', locals: { page: @products }
+
+    %table.table.table-hover.admin-products
+      %thead
+        %tr
+          %td= sort_link( @q, :id, t("product.number"))
+          %td= sort_link( @q, :name, t("product.name"))
+          %td= t("Picture")
+          %td= sort_link( @q, :price, t("Price"))
+          %td= sort_link( @q, :is_online, t("Status"))
+
+      - @products.each do |product|
+        %tr
+          %td= product.id
+          %td= product.name
+          %td.product= link_to( image_tag(product.image.normal), '#', html_options = { "data-toggle": "modal", "data-target": "#myModal#{product.id}" })
+          %td= product.price
+          %td
+            = product.status
+            = link_to t('recover_product'), unrecycle_admin_product_path(product), method: :post, class:'btn btn-default btn-xs'
+            = destroy_button admin_product_path(product)
+
+        = render partial: 'products/model', locals: { product: product }
+
+    = render partial: 'pagination', locals: { page: @products }

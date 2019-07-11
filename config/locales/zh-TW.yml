@@ -71,8 +71,15 @@ zh-TW:
     on_shelf: 是否上架？
 
   product:
+    all: 全部商品
+    category: 商品 - %{category}
+    recycled: 商品 - 資源回收桶
     number: 商品編號
     name: 商品名稱
+    add: 新增商品
+    edit: 修改商品
+    created_at: 創建日期
+    updated_at: 修改日期
 
   order:
     title: 訂單

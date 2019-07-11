@@ -5,7 +5,5 @@
   = f.input :price, label: t('Price')
   = f.input :is_online, label: t('Shelf')
   = f.input :image, label: t('Picture'), as: :file
-  .row
-    .col-md-12
-      = f.button :submit
-      = link_to t('back'), :back, class: 'btn btn-default'
+  = f.button :submit
+  = link_to t('back'), :back, class: 'btn btn-default'
