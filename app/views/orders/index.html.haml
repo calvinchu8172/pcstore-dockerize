@@ -7,9 +7,9 @@
   .col-md-2.col-sm-12.col-xs-12
     = search_form_for @q, html: { class: 'orders-form' } do |f|
       .form-group
-        = f.input :id_eq, placeholder: t("search.number"), placeholder: t("search.number"), label: t("order.number"), required: false, wrapper_html: { class: 'd-flex' }
-        = f.input :created_at_gteq, as: :datetime, label: t("search.date.start"), required: false, wrapper_html: { class: 'd-flex' }
-        = f.input :created_at_lteq, as: :datetime, label: t("search.date.end"), required: false, wrapper_html: { class: 'd-flex' }
+        = f.input :id_eq, placeholder: t("search.number"), label: t("order.number"), required: false, wrapper_html: { class: 'd-flex' }
+        = f.input :created_at_gteq, as: :datetime, label: t("search.date.start"), default: Order.default_order_start_datetime(current_user), required: false, wrapper_html: { class: 'd-flex' }
+        = f.input :created_at_lteq, as: :datetime, label: t("search.date.end"), default: Time.zone.now, required: false, wrapper_html: { class: 'd-flex' }
       .form-group
         = f.input :sum_gteq, placeholder: 'ex: 100', label: t("search.sum.start"), required: false, wrapper_html: { class: 'd-flex' }
         = f.input :sum_lteq, placeholder: 'ex: 1000', label: t("search.sum.end"), required: false, wrapper_html: { class: 'd-flex' }

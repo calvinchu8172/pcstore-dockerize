@@ -1,10 +1,8 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :find_order, except: :index
-  before_action :ignore_other_params_if_id_exists, only: :index
 
   def index
-    params[:q] = ignore_other_params_if_id_exists
 
     @q = current_user.orders.ransack(params[:q])
     @data = @q.result(distinct: true)
@@ -39,14 +37,6 @@ class OrdersController < ApplicationController
 
   def find_order
     @order = Order.find( params[:id] )
-  end
-
-  def ignore_other_params_if_id_exists
-    if params[:q]
-      unless params[:q]['id_eq'].blank?
-        params[:q].delete_if {|key, value| key != 'id_eq' }
-      end
-    end
   end
 
 end

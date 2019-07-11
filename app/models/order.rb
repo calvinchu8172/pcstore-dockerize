@@ -46,4 +46,12 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def self.default_order_start_datetime(user)
+    if user.orders.first.blank?
+      Time.now
+    else
+      user.orders.first.created_at
+    end
+  end
+
 end
