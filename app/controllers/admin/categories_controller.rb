@@ -1,6 +1,10 @@
 class Admin::CategoriesController < Admin::BaseController
+  before_action :all_categroies
+  
   def index
-    @categories = Category.all
+    @q = Category.ransack(params[:q])
+    @data = @q.result(distinct: true)
+    @ransack_categories = @data.all
   end
 
   def new
@@ -36,8 +40,13 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   private
+  
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def all_categroies
+    @categories = Category.all
   end
 
 end

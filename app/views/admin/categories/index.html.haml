@@ -1,12 +1,22 @@
-%table.table.table-hover
-  %thead
-    %tr
-      %td= t("Category")
-      %td
+.row
+  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+    %h1= t("category.all")
 
-  - @categories.each do |category|
-    %tr
-      %td= category.name
-      %td
-        = edit_button edit_admin_category_path(category)
-        = destroy_button admin_category_path(category)
+  .col-lg-2.col-md-2.col-sm-12.col-xs-12
+    = render partial: 'search_category', locals: { url: admin_categories_path }
+
+  .col-lg-10.col-md-10.col-sm-12.col-xs-12
+    %table.table.table-hover
+      %thead
+        %tr
+          %td= sort_link( @q, :id, t("category.number"))
+          %td= sort_link( @q, :name, t("category.name"))
+          %td
+
+      - @ransack_categories.each do |category|
+        %tr
+          %td= category.id
+          %td= category.name
+          %td
+            = edit_button edit_admin_category_path(category)
+            = destroy_button admin_category_path(category)

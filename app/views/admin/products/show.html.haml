@@ -15,7 +15,7 @@
         %td   
           = @product.status
           = edit_button edit_admin_product_path(@product)
-          = link_to t('recycle_product'), recycle_admin_product_path(@product), method: :post, class:'btn btn-default btn-xs'
+          = link_to t('recycle_product'), recycle_admin_product_path(@product), method: :post, class: 'btn btn-default btn-xs'
           = destroy_button admin_product_path(@product)
       %tr
         %td=t("product.created_at")
@@ -27,6 +27,6 @@
         %td=t("Detail")
         %td{ colspan: "3" }=@product.description
 
-    = link_to t('back_to_products'), admin_products_path, class:'btn btn-default'
+    = link_to t('back_to_products'), admin_products_path, class: 'btn btn-default'
 
     = render partial: 'products/model', locals: { product: @product }

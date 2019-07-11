@@ -1,0 +1,7 @@
+= search_form_for @q, url: url, html: { class: 'orders-form' } do |f|
+  .form-group
+    = f.input :id_eq, placeholder: t("search.number"), label: t("category.number"), required: false, wrapper_html: { class: 'd-flex' }
+    = f.input :name_eq, placeholder: t("category.name"), label: t("category.name"), required: false, wrapper_html: { class: 'd-flex' }
+  .btn-group
+    = link_to t("search.clear"), request.path, class: "btn btn-default"
+    = f.submit t("search.search"), class: 'btn btn-primary'

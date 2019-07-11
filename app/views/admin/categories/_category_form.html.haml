@@ -1,3 +1,4 @@
 = simple_form_for([:admin, @category]) do |f|
   = f.input :name, label: t("Category_name")
-  = f.button :submit
+  = f.button :submit, class: 'btn btn-primary'
+  = link_to t('back'), :back, class: 'btn btn-default'

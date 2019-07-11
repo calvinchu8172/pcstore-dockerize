@@ -69,6 +69,13 @@ zh-TW:
       start: 日期起
       end: 日期迄
     on_shelf: 是否上架？
+  
+  category:
+    all: 分類列表
+    number: 分類編號
+    name: 分類名稱
+    add: 新增分類
+    edit: 修改分類
 
   product:
     all: 全部商品

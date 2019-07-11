@@ -89,6 +89,13 @@ en:
       start: Date start from
       end: to
     on_shelf: On shelf?
+  
+  category:
+    all: Categories list
+    number: Category No.
+    name: Category name
+    add: Add category
+    edit: Edit category
 
   product:
     all: All products
