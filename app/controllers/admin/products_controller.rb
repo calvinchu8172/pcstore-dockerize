@@ -1,8 +1,9 @@
 class Admin::ProductsController < Admin::BaseController
   before_action :all_categroies
+  before_action :find_product, only: [:show, :edit, :update, :recycle]
 
   def index
-    @q = Product.ransack(params[:q])
+    @q = Product.unscope(where: :is_online).ransack(params[:q])
     @data = @q.result(distinct: true)
 
     if params[:category]
@@ -15,7 +16,6 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def show
-    @product = Product.find_by(id: params[:id])
   end
 
   def new
@@ -23,11 +23,9 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def edit
-    @product = Product.find_by(id: params[:id])
   end
 
   def update
-    @product = Product.find_by(id: params[:id])
     if @product.update(product_params)
       redirect_to admin_product_path(@product), success: I18n.t('update_product_successful')
     else
@@ -51,7 +49,6 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def recycle
-    @product = Product.find_by(id: params[:id])
     @product.recycle
     redirect_to admin_products_path, warning: I18n.t('product_recycled')
   end 
@@ -74,6 +71,11 @@ class Admin::ProductsController < Admin::BaseController
 
   def all_categroies
     @categories = Category.all
+  end
+
+  def find_product
+    # @product = Product.find_by(id: params[:id])
+    @product = Product.unscope(where: :is_online).find_by(id: params[:id])
   end
 
   def product_params

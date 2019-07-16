@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
 
   belongs_to :category
 
-  default_scope { where(is_recycled: false) }
+  default_scope { where(is_recycled: false, is_online: true) }
 
   # 被include SoftDestroy所取代，SoftDestroy方法寫在concern內
   # def set_delete
