@@ -108,7 +108,7 @@ zh-TW:
       success: 成功更新訂單
     delete: 捨棄訂單
     no_order: 無訂單。
-    failed: 此訂單已作廢
+    failed: 此訂單已作廢。
 
   order_item:
     unavailable_reason:
