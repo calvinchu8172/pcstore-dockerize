@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :find_order, except: :index
-  before_action :order_failed, only: :edit
+  before_action :check_order_items_available, only: [:show, :edit]
+  before_action :order_failed?, only: :edit
 
   def index
     Order.check_user_order_item_available(current_user)
@@ -41,7 +42,11 @@ class OrdersController < ApplicationController
     @order = Order.find( params[:id] )
   end
 
-  def order_failed
+  def check_order_items_available
+    Order.check_order_items_available(@order)
+  end
+
+  def order_failed?
     if @order.is_failed?
       redirect_to order_path(@order), danger: I18n.t('order.failed')
     end

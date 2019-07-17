@@ -25,8 +25,8 @@
     %table.table.table-hover
       %thead
         %tr
-          %td= sort_link( @q, :id, t("order.number"))
-          %td= sort_link( @q, :created_at, t("order.date"))
+          %td= sort_link( @q, :id, t("order.number"), default_order: :desc)
+          %td= sort_link( @q, :created_at, t("order.date"), default_order: :desc)
           %td= sort_link( @q, :sum, t("order.total_price"))
           %td= sort_link( @q, :state, t("order.status"))
           %td= t("order.detail")

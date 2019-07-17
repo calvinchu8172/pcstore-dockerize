@@ -55,25 +55,29 @@ class Order < ActiveRecord::Base
 
   def self.check_user_order_item_available(user)
     user.orders.each do |order|
-      unless order.is_failed?
-        result = false
-        
-        order.order_items.each do |order_item|  
-          if Product.unscoped.find(order_item.product_id).is_online == false
-            order_item.update(is_unavailable: true, unavailable_reason: 'offline')
-            result = true
-          elsif Product.unscoped.find(order_item.product_id).is_recycled == true
-            order_item.update(is_unavailable: true, unavailable_reason: 'recycled')
-            result = true
-          elsif Product.unscoped.find(order_item.product_id).nil?
-            order_item.update(is_unavailable: true, unavailable_reason: 'deleted')
-            result = true          
-          end
-        end
+      self.check_order_items_available(order)
+    end
+  end
 
-        if result == true
-          order.update(is_failed: true)
+  def self.check_order_items_available(order)
+    unless order.is_failed?
+      result = false
+      
+      order.order_items.each do |order_item|  
+        if Product.unscoped.find(order_item.product_id).is_online == false
+          order_item.update(is_unavailable: true, unavailable_reason: 'offline')
+          result = true
+        elsif Product.unscoped.find(order_item.product_id).is_recycled == true
+          order_item.update(is_unavailable: true, unavailable_reason: 'recycled')
+          result = true
+        elsif Product.unscoped.find(order_item.product_id).nil?
+          order_item.update(is_unavailable: true, unavailable_reason: 'deleted')
+          result = true          
         end
+      end
+
+      if result == true
+        order.update(is_failed: true)
       end
     end
   end
