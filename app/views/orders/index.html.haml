@@ -32,18 +32,18 @@
           %td= t("order.detail")
 
       - @orders.each do |order|
-        - if order.not_paid?
+        - if order.not_paid? && !order.is_failed?
           %tr.warning
             %td= order.id
             %td= order.created_at
-            %td= order.total_price
+            %td= order.sum
             %td= order.status
             %td= link_to t('Detail'), order_path(order), class:'btn btn-warning btn-xs'
         - else
           %tr
             %td= order.id
             %td= order.created_at
-            %td= order.total_price
+            %td= order.sum
             %td= order.status
             %td= link_to t('Detail'), order_path(order), class:'btn btn-default btn-xs'
 

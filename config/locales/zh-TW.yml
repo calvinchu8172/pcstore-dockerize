@@ -102,11 +102,18 @@ zh-TW:
     state:
       new: 未付款
       paid: 已付款
+      failed: 已作廢
       unknown: 未知
     update:
       success: 成功更新訂單
     delete: 捨棄訂單
     no_order: 無訂單。
+    failed: 此訂單已作廢
+
+  order_item:
+    unavailable_reason:
+      offline: 已下架
+      deleted: 已刪除
 
   payment:
     credit_card: 刷卡

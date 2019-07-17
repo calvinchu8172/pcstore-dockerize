@@ -1,8 +1,11 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :find_order, except: :index
+  before_action :order_failed, only: :edit
 
   def index
+    Order.check_user_order_item_available(current_user)
+
     @q = current_user.orders.ransack(params[:q])
     @data = @q.result(distinct: true)
     @orders = @data.page(params[:page]).per(20)
@@ -36,6 +39,12 @@ class OrdersController < ApplicationController
 
   def find_order
     @order = Order.find( params[:id] )
+  end
+
+  def order_failed
+    if @order.is_failed?
+      redirect_to order_path(@order), danger: I18n.t('order.failed')
+    end
   end
 
 end

@@ -6,4 +6,14 @@ class OrderItem < ActiveRecord::Base
   def price
     quantity.blank?? 0 : product.price * quantity
   end
+
+  def reason
+    if unavailable_reason == 'offline'
+      I18n.t('order_item.unavailable_reason.offline')
+    elsif unavailable_reason == 'recycled'
+      I18n.t('order_item.unavailable_reason.offline')
+    elsif unavailable_reason == 'deleted'
+      I18n.t('order_item.unavailable_reason.deleted')
+    end
+  end
 end

@@ -93,6 +93,7 @@ class CartsController < ApplicationController
     @cart.items.each do |item|
       hash = { product_id: item.product.id,
                product_name: item.product.name,
+               product_price: item.product.price,
                quantity: item.quantity 
              }
       order_items << OrderItem.new(hash)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190709115111) do
+ActiveRecord::Schema.define(version: 20190716102553) do
 
   create_table "access_tokens", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -42,12 +42,15 @@ ActiveRecord::Schema.define(version: 20190709115111) do
   add_index "omniauths", ["user_id"], name: "index_omniauths_on_user_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
-    t.integer  "order_id",     limit: 4
-    t.integer  "product_id",   limit: 4
-    t.string   "product_name", limit: 255
-    t.integer  "quantity",     limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "order_id",           limit: 4
+    t.integer  "product_id",         limit: 4
+    t.string   "product_name",       limit: 255
+    t.integer  "quantity",           limit: 4
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.integer  "product_price",      limit: 4
+    t.boolean  "is_unavailable",                 default: false
+    t.string   "unavailable_reason", limit: 255
   end
 
   create_table "orders", force: :cascade do |t|
@@ -56,6 +59,7 @@ ActiveRecord::Schema.define(version: 20190709115111) do
     t.datetime "updated_at",                            null: false
     t.string   "state",      limit: 20, default: "new"
     t.float    "sum",        limit: 24
+    t.boolean  "is_failed",             default: false
   end
 
   create_table "products", force: :cascade do |t|

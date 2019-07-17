@@ -16,15 +16,22 @@
           %td= t("Price")
 
       - @order.order_items.each do |item|
-        %tr
-          %td= item.product_id
-          %td= item.product_name
-          %td= item.quantity
-          %td= item.product.price
+        - if item.is_unavailable?
+          %tr.danger.failed
+            %td= item.product_id
+            %td= item.product_name
+            %td= item.quantity
+            %td= "#{item.product_price} (#{item.reason})"
+        - else
+          %tr
+            %td= item.product_id
+            %td= item.product_name
+            %td= item.quantity
+            %td= item.product_price
       %tfoot
         %tr
           %td.test-right{ colspan: "3" }= t("Total")
-          %td= @order.total_price
+          %td= @order.sum
 
 %h1
   = t('Receiver')
@@ -52,7 +59,7 @@
 .row
   .col-md-12
     = link_to t('back'), orders_path, class: 'btn btn-default'
-    - if @order.not_paid?
+    - if @order.not_paid? && !@order.is_failed?
       = link_to t('order.edit'), edit_order_path(@order), class: 'btn btn-default'
       = link_to t('Check_out'), { controller: 'payments', action: 'new', order_id: @order.id }, class: 'btn btn-success'
       / = link_to t('order.delete'), '#', class: 'btn btn-danger'

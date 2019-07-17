@@ -120,13 +120,20 @@ en:
     status: Order Status
     owner: Owner
     state:
-      new: unpaid
-      paid: paid
-      unknown: unknown
+      new: Unpaid
+      paid: Paid
+      failed: Failed
+      unknown: Unknown
     update:
       success: Update order successfully!
     delete: Delete
     no_order: No order.
+    failed: This order has been failed.
+
+  order_item:
+    unavailable_reason:
+      offline: removed form shelf
+      deleted: has been deleted
 
   payment:
     credit_card: Pay by Credit Card
