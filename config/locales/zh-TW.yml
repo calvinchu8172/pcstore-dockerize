@@ -99,6 +99,7 @@ zh-TW:
     detail: 訂單細項
     status: 訂單狀態
     owner: 擁有者
+    owner_email: 擁有者 email
     state:
       new: 未付款
       paid: 已付款

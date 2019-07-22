@@ -1,11 +1,13 @@
-%h1
-  = t('order.all')
-%hr
-
-= render partial: 'pagination', locals: { page: @orders }
-
 .row
-  .col-md-12
+  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+    %h1= t('order.all')
+
+  .col-lg-2.col-md-2.col-sm-12.col-xs-12
+    = render partial: 'search_order', locals: { url: admin_orders_path, default_created_at: Order.first.created_at }
+
+  .col-lg-10.col-md-10.col-sm-12.col-xs-12
+    = render partial: 'pagination', locals: { page: @orders }
+
     %table.table.table-hover
       %thead
         %tr
@@ -17,12 +19,12 @@
           / %td= t("order.detail")
 
       - @orders.each do |order|
-        - if order.not_paid?
+        - if order.not_paid? && !order.is_failed?
           %tr.warning
             %td= order.id
             %td= order.created_at
             %td= order.user.email
-            %td= order.total_price
+            %td= order.sum
             %td= order.status
             / %td= link_to t('Detail'), order_path(order), class:'btn btn-warning btn-xs'
         - else
@@ -30,9 +32,13 @@
             %td= order.id
             %td= order.created_at
             %td= order.user.email
-            %td= order.total_price
+            %td= order.sum
             %td= order.status
             / %td= link_to t('Detail'), order_path(order), class:'btn btn-default btn-xs'
+
+    .col-lg-10.col-md-10.col-sm-12.col-xs-12
+      = render partial: 'pagination', locals: { page: @orders }
+
 .row
   .col-md-12
     = link_to t('back'), admin_products_path, class: 'btn btn-default'

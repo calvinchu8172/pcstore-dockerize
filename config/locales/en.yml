@@ -119,6 +119,7 @@ en:
     detail: Order Detail
     status: Order Status
     owner: Owner
+    owner_email: Owner Email
     state:
       new: Unpaid
       paid: Paid

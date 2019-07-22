@@ -1,0 +1,15 @@
+= search_form_for @q, url: url, html: { class: 'orders-form', novalidate: true } do |f|
+  .form-group
+    = f.input :id_eq, placeholder: t("search.number"), label: t("product.number"), required: false, wrapper_html: { class: 'd-flex' }
+    = f.input :user_email_cont, placeholder: t("order.owner_email"), label: t("order.owner_email"), required: false, wrapper_html: { class: 'd-flex' }, input_html: { formnovalidate: true }
+  .form-group
+    = f.input :state_or_is_failed_eq, as: :select, collection: [['已付款', 'paid'], ['未付款', 'new'], ['已作廢', true]], include_blank: true, label: t("search.on_shelf"), required: false, wrapper_html: { class: 'd-flex' }
+  .form-group
+    = f.input :created_at_gteq, as: :datetime, label: t("search.date.start"), default: default_created_at, required: false, wrapper_html: { class: 'd-flex' }
+    = f.input :created_at_lteq, as: :datetime, label: t("search.date.end"), default: Time.zone.now, required: false, wrapper_html: { class: 'd-flex' }
+  .form-group
+    = f.input :sum_gteq, placeholder: 'ex: 1000', label: t("search.price.start"), required: false, wrapper_html: { class: 'd-flex' }
+    = f.input :sum_lteq, placeholder: 'ex: 10000', label: t("search.price.end"), required: false, wrapper_html: { class: 'd-flex' }
+  .btn-group
+    = link_to t("search.clear"), request.path, class: "btn btn-default"
+    = f.submit t("search.search"), class: 'btn btn-primary'
