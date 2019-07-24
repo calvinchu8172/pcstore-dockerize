@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
   end
 
   def order_failed?
-    if @order.is_failed?
+    if @order.failed?
       redirect_to order_path(@order), danger: I18n.t('order.failed')
     end
   end

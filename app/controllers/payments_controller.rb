@@ -8,12 +8,12 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    transaction = OrderTransaction.new(order,
+    transaction = OrderTransaction.new(@order,
                                        params[:payment_method_nonce])
     transaction.execute
     if transaction.ok?
-      order.paid
-      redirect_to products_path, success: I18n.t('pay_successful', total_price: order.total_price)
+      @order.pay!
+      redirect_to products_path, success: I18n.t('pay_successful', total_price: @order.total_price)
     else
       redirect_to products_path, danger: I18n.t('pay_failed')
     end
@@ -30,7 +30,7 @@ class PaymentsController < ApplicationController
   end
 
   def order_failed?
-    if @order.is_failed?
+    if @order.failed?
       redirect_to order_path(@order), danger: I18n.t('order.failed')
     end
   end

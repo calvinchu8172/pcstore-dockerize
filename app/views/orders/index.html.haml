@@ -32,7 +32,7 @@
           %td= t("order.detail")
 
       - @orders.each do |order|
-        - if order.not_paid? && !order.is_failed?
+        - if order.not_paid? && !order.failed?
           %tr.warning
             %td= order.id
             %td= order.created_at

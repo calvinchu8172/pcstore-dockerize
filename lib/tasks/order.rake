@@ -1,7 +1,7 @@
 namespace :order do
-  task :clear_failed => :environment do
+  task :update => :environment do
     Order.all.each do |order|
-      order.update(is_failed: false)
+      order.update(state: 'new')
       order.order_items.each do |order_item|
         order_item.update(
           is_unavailable: false, 
@@ -11,5 +11,6 @@ namespace :order do
 
       end
     end
+    puts '***updated***'
   end
 end

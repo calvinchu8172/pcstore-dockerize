@@ -1,6 +1,6 @@
-require 'state_machine'
-
 class Order < ActiveRecord::Base
+  include AASM
+
   belongs_to :user
   has_one :receipt
   has_many :order_items
@@ -11,24 +11,42 @@ class Order < ActiveRecord::Base
     order_items.inject(0) { |sum, item| sum + item.price }
   end
 
-  state_machine :state, initial: :new do
-    event :paid do
-      transition :new => :paid
+  aasm column: :state do
+    state :new, initial: true
+    state :paid, :shipping, :delivered, :returned, :refunded, :failed
+
+    event :pay do
+      transitions from: :new, to: :paid
     end
 
-    event :deliver do
-      transition :paid => :delivered
+    event :failed do
+      transitions from: :new, to: :failed
     end
 
-    after_transition :new => :paid do
+    # event :pay_if_items_exist do
+    #   transitions from: :new, to: :paid, guard: :check_order_items
+    #   transitions from: :new, to: :failed
+    # end
+
+    event :ship do
+      transitions from: :paid, to: :shipping
     end
 
-    after_transition :paid => :delivered do
+    event :delivering do
+      transitions from: :shipping, to: :delivered
+    end
+
+    event :return do
+      transitions from: [:delivered, :shipping], to: :returned
+    end
+
+    event :refund do
+      transitions from: [:paid, :returned], to: :refunded
     end
   end
 
   def status
-    if self.is_failed?
+    if self.failed?
       I18n.t("order.state.failed")
     elsif self.state == 'new'
       I18n.t("order.state.new")
@@ -60,26 +78,46 @@ class Order < ActiveRecord::Base
   end
 
   def self.check_order_items_available(order)
-    unless order.is_failed?
-      result = false
+    if order.new?
+      result = true
       
       order.order_items.each do |order_item|  
         if Product.unscoped.find(order_item.product_id).is_online == false
           order_item.update(is_unavailable: true, unavailable_reason: 'offline')
-          result = true
+          result = false
         elsif Product.unscoped.find(order_item.product_id).is_recycled == true
           order_item.update(is_unavailable: true, unavailable_reason: 'recycled')
-          result = true
+          result = false
         elsif Product.unscoped.find(order_item.product_id).nil?
           order_item.update(is_unavailable: true, unavailable_reason: 'deleted')
-          result = true          
+          result = false         
         end
       end
 
-      if result == true
-        order.update(is_failed: true)
+      if result == false
+        order.failed!
       end
     end
   end
+
+  # def check_order_items(order)
+  #   if order.new?
+  #     result = true
+      
+  #     order.order_items.each do |order_item|  
+  #       if Product.unscoped.find(order_item.product_id).is_online == false
+  #         order_item.update(is_unavailable: true, unavailable_reason: 'offline')
+  #         result = false
+  #       elsif Product.unscoped.find(order_item.product_id).is_recycled == true
+  #         order_item.update(is_unavailable: true, unavailable_reason: 'recycled')
+  #         result = false
+  #       elsif Product.unscoped.find(order_item.product_id).nil?
+  #         order_item.update(is_unavailable: true, unavailable_reason: 'deleted')
+  #         result = false         
+  #       end
+  #     end
+  #     result
+  #   end
+  # end
 
 end

@@ -29,8 +29,7 @@ gem 'unicorn'
 
 gem 'strip_attributes'
 gem 'mini_magick'
-gem 'state_machine', :require => 'state_machine/core' #state machine
-gem 'state_machines-activerecord'
+gem 'aasm'
 gem "rails-i18n"
 gem 'rails_config', '~> 0.4.2'
 

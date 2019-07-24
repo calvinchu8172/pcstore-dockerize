@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 20190716102553) do
     t.datetime "updated_at",                            null: false
     t.string   "state",      limit: 20, default: "new"
     t.float    "sum",        limit: 24
-    t.boolean  "is_failed",             default: false
   end
 
   create_table "products", force: :cascade do |t|
