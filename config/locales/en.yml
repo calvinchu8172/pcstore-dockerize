@@ -87,7 +87,7 @@ en:
       end: to
     date:
       start: Date start from
-      end: to
+      end: Date end to
     on_shelf: On shelf?
   
   category:
@@ -110,12 +110,15 @@ en:
   
   order:
     title: Order
-    all: Al Orders
+    all: All Orders
     edit: Edit Order
     my_orders: My orders
     number: Order No.
     date: Order Date
     total_price: Total
+    sum:
+      start: Sum start from
+      end: Sum end to
     detail: Order Detail
     status: Order Status
     owner: Owner

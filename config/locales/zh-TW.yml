@@ -1,4 +1,3 @@
----
 zh-TW:
   language: 語系
   pcstore: "PCStore"
@@ -96,6 +95,9 @@ zh-TW:
     number: 訂單編號
     date: 訂單日期
     total_price: 總金額
+    sum:
+      start: 總金額起
+      end: 總金額迄
     detail: 訂單細項
     status: 訂單狀態
     owner: 擁有者

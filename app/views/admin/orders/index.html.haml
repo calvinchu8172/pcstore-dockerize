@@ -11,15 +11,15 @@
     %table.table.table-hover
       %thead
         %tr
-          %td= t("order.number")
-          %td= t("order.date")
-          %td= t("order.owner")
-          %td= t("order.total_price")
-          %td= t("order.status")
+          %td= sort_link( @q, :id, t("order.number"), default_order: :desc)
+          %td= sort_link( @q, :created_at, t("order.date"), default_order: :desc)
+          %td= sort_link( @q, :user_email, t("order.owner"))
+          %td= sort_link( @q, :sum, t("order.total_price"))
+          %td= sort_link( @q, :state, t("order.status"))
           / %td= t("order.detail")
 
       - @orders.each do |order|
-        - if order.not_paid? && !order.is_failed?
+        - if order.not_paid? && !order.failed?
           %tr.warning
             %td= order.id
             %td= order.created_at
