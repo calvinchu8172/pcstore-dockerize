@@ -7,13 +7,14 @@
 = simple_form_for @order, url: { controller: 'orders', action: 'update' }, method: :put do |f|
   .row
     .col-md-12
-      %table.table.table-hover
+      %table.table.table-hover#order-items
         %thead
           %tr
             %td= t("product.number")
             %td= t("product.name")
             %td= t("Quantity")
             %td= t("Price")
+            %td
         
         - @order.order_items.each do |order_item|
           %tr
@@ -22,12 +23,14 @@
             %td
               = f.fields_for :order_items, order_item do |p|
                 = p.input :quantity, input_html: { min: 1, class: 'quantity' }, wrapper_html: { class: 'item-quantity-field' }, label: false
-            %td.price= order_item.product_price
+            %td.price= number_to_currency(order_item.product_price)
+            %td
 
         %tfoot
           %tr
-            %td.test-right{ colspan: "3" }= t("Total")
-            %td{ id: 'total' }= @order.total_price
+            %td{ colspan: "3" }= t("Total")
+            %td{ id: 'total' }= number_to_currency(@order.total_price)
+            %td
   %h1
     = t('Receiver')
   %hr
@@ -58,6 +61,28 @@
       = f.submit t('confirm'), class: 'btn btn-primary'
 
 
+%table.table.table-hover
+  %tr#add-item
+    = simple_form_for @order_item, url: create_order_item_order_path(@order) do |g|
+      %td
+        = g.input :product_id, label: false, placeholder: t('order.search.product.id'), input_html: { id: 'products-search-id', autofocus: 'autofocus' }
+        .results#products-search-id-results
+        .results#products-search-id-no-results
+      %td
+        = g.input :product_name, label: false, placeholder: t('order.search.product.name'), input_html: { id: 'products-search-name', autofocus: 'autofocus' }
+        .results#products-search-name-results
+        .results#products-search-name-no-results
+      %td
+        = g.input :quantity, input_html: { value: 1, min: 1, class: 'quantity' }, wrapper_html: { class: 'item-quantity-field' }, label: false
+      %td.price#products-search-price= ''
+      %td
+        = g.submit t('order.add'), class: 'btn btn-primary'
+
+
+:javascript
+  $(function() {
+    var product = new app.Products;
+  });
   
     
 

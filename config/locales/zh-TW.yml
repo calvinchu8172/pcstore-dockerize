@@ -86,6 +86,7 @@ zh-TW:
     edit: 修改商品
     created_at: 創建日期
     updated_at: 修改日期
+    no_result: 無此產品
 
   order:
     title: 訂單
@@ -112,6 +113,11 @@ zh-TW:
     delete: 捨棄訂單
     no_order: 無訂單。
     failed: 此訂單已作廢。
+    add: 加入
+    search:
+      product:
+        id: 搜尋產品編號
+        name: 搜尋產品名稱
 
   order_item:
     unavailable_reason:
@@ -138,6 +144,7 @@ zh-TW:
 
   update_product_successful: 成功更新商品！
   add_product_successful: 成功新增商品！
+  add_product_failed: 新增商品失敗！無此商品。
   product_deleted: 商品已刪除！
   product_recycled: 商品已丟入回收桶！
   product_unrecycled: 商品已自回收桶復原！

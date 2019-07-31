@@ -107,6 +107,7 @@ en:
     edit: Edit product
     created_at: Created at
     updated_at: Updated at
+    no_result: Not found.
   
   order:
     title: Order
@@ -133,6 +134,11 @@ en:
     delete: Delete
     no_order: No order.
     failed: This order has been failed.
+    add: Add
+    search:
+      product:
+        id: Search product number.
+        name: Search product name.
 
   order_item:
     unavailable_reason:

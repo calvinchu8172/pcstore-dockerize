@@ -33,3 +33,7 @@ $(function(){
 
   });
 });
+
+$(function(){
+  $('#add-item').appendTo('#order-items > tbody')
+});

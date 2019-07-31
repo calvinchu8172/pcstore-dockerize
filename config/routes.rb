@@ -29,7 +29,14 @@ Rails.application.routes.draw do
       #checkout
   end
 
-  resources :orders
+  resources :orders do
+    member do
+      post 'create_order_item'
+    end
+    collection do
+      get 'search'
+    end
+  end
 
   #backend
   namespace :admin do

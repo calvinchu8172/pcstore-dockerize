@@ -12,9 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/widgets/autocomplete
 //= require bootstrap-sprockets
 
 //= require_tree .
 //= require orders
+//= require order_add_item
 
 
