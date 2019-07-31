@@ -144,6 +144,9 @@ en:
     unavailable_reason:
       offline: removed form shelf
       deleted: has been deleted
+    destroy:
+      success: Successfully delete %{order_item}
+      failed: Failed to delete %{order_item}
 
   payment:
     credit_card: Pay by Credit Card

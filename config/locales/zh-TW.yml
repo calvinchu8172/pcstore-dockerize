@@ -123,6 +123,9 @@ zh-TW:
     unavailable_reason:
       offline: 已下架
       deleted: 已刪除
+    destroy:
+      success: 成功刪除 %{order_item}
+      failed: 刪除失敗 %{order_item}
 
   payment:
     credit_card: 刷卡

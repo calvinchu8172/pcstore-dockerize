@@ -30,12 +30,10 @@ Rails.application.routes.draw do
   end
 
   resources :orders do
-    member do
-      post 'create_order_item'
-    end
     collection do
       get 'search'
     end
+    resources :order_items, only: [:create, :destroy]
   end
 
   #backend

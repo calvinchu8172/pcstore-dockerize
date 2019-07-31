@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_order, except: [:index, :create_order_item, :search]
+  before_action :find_order, except: [:index, :search]
   before_action :check_order_items_available, only: [:show, :edit]
   before_action :order_failed?, only: :edit
 
@@ -21,30 +21,6 @@ class OrdersController < ApplicationController
 
   def edit
     @order_item = OrderItem.new
-  end
-
-  def create_order_item
-    @order = Order.find(params[:id])
-
-    product = Product.find_by(id: order_item_params[:product_id])
-    if product.nil?
-      redirect_to edit_order_path(@order), danger: I18n.t('add_product_failed')
-    else
-      order_item = @order.order_items.find_by(product_id: order_item_params[:product_id])
-      if order_item.nil?
-        
-        @order.order_items.create( product_id: order_item_params[:product_id], 
-          product_name: Product.find(order_item_params[:product_id]).name, 
-          quantity: order_item_params[:quantity],
-          product_price: Product.find(order_item_params[:product_id]).price
-        )
-      else
-        order_item.update( quantity: order_item.quantity + order_item_params[:quantity].to_i )
-      end
-      
-      redirect_to edit_order_path(@order), success: I18n.t('add_product_successful')
-    end
-    
   end
 
   def update
@@ -80,10 +56,6 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:id, order_items_attributes: [:id, :quantity], receipt_attributes: [:name, :tel, :country, :city, :address])
   end
-
-  def order_item_params
-    params.require(:order_item).permit(:id, :product_id, :product_name, :quantity)
-  end  
 
   def find_order
     @order = Order.find( params[:id] )

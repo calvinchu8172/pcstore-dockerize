@@ -25,6 +25,7 @@
                 = p.input :quantity, input_html: { min: 1, class: 'quantity' }, wrapper_html: { class: 'item-quantity-field' }, label: false
             %td.price= order_item.product_price
             %td
+              = link_to t("Delete"), order_order_item_path(@order, order_item), method: :delete, class: 'btn btn-danger', data:{ confirm: t('Make_sure') }
 
         %tfoot
           %tr
@@ -63,7 +64,7 @@
 
 %table.table.table-hover
   %tr#add-item
-    = simple_form_for @order_item, url: create_order_item_order_path(@order) do |g|
+    = simple_form_for @order_item, url: order_order_items_path(@order) do |g|
       %td
         = g.input :product_id, label: false, placeholder: t('order.search.product.id'), input_html: { id: 'products-search-id', autofocus: 'autofocus' }
         .results#products-search-id-results
