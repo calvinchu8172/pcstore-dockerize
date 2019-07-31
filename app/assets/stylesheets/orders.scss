@@ -69,12 +69,12 @@ tr.failed {
     background: #fff;
     border-left-color: #08c;
     font-weight: 300;
-    .price, .author, .title {
+    .item-price, .item-name, .item-id {
       color: #08c;
     }
   }
   .ui-menu-item {
-    .img {
+    .item-img {
       position: absolute;
       width: 5em;
       height: 6em;
@@ -85,21 +85,22 @@ tr.failed {
         max-width: 100%;
       }
     }
-    .title {
+    .item-id {
       display: block;
       color: #555;
     }
 
-    .author {
+    .item-name {
       display: block;
       font-size: .8em;
       text-transform: uppercase;
-      color: #aaa;
+      color: #555;
+      // color: #aaa;
       margin-top: .6em;
       letter-spacing: 1px;
     }
 
-    .price {
+    .item-price {
       display: block;
       font-size: .8em;
       color: #aaa;

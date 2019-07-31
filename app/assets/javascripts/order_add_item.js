@@ -76,12 +76,12 @@ $(function(){
 
     _render: function(ul, item) {
       var markup = [
-        '<span class="img">',
+        '<span class="item-img">',
           item.image_url,
         '</span>',
-        '<span class="title">' + item.id + '</span>',
-        '<span class="author">' + item.name + '</span>',
-        '<span class="price">' + item.price + '</span>'
+        '<span class="item-id">' + item.id + '</span>',
+        '<span class="item-name">' + item.name + '</span>',
+        '<span class="item-price">' + 'NT ' + item.price + '</span>'
       ];
       return $('<li>')
         .append(markup.join(''))

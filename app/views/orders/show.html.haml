@@ -21,17 +21,17 @@
             %td= item.product_id
             %td= item.product_name
             %td= item.quantity
-            %td= "#{item.product_price} (#{item.reason})"
+            %td= "#{number_to_currency item.product_price, precision: 0} (#{item.reason})"
         - else
           %tr
             %td= item.product_id
             %td= item.product_name
             %td= item.quantity
-            %td= item.product_price
+            %td= number_to_currency item.product_price, precision: 0
       %tfoot
         %tr
           %td{ colspan: "3" }= t("Total")
-          %td= @order.sum
+          %td= number_to_currency @order.sum, precision: 0
 
 %h1
   = t('Receiver')
