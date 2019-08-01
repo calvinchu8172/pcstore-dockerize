@@ -1,0 +1,14 @@
+%tr.nested-fields
+  %td
+    = f.input :product_id, label: false, placeholder: t('order.search.product.id'), input_html: { id: 'products-search-id', autofocus: 'autofocus' }
+    .results#products-search-id-results
+    .results#products-search-id-no-results
+  %td
+    = f.input :product_name, label: false, placeholder: t('order.search.product.name'), input_html: { id: 'products-search-name', autofocus: 'autofocus' }
+    .results#products-search-name-results
+    .results#products-search-name-no-results
+  %td
+    = f.input :quantity, input_html: { value: 1, min: 1, class: 'quantity' }, wrapper_html: { class: 'item-quantity-field' }, label: false
+  %td.price#products-search-price= '0'
+  %td
+    = link_to_remove_association "remove", f, class: 'btn btn-default'

@@ -32,21 +32,9 @@
             %td= t("Price") + " (NT)"
             %td
 
-
-        = f.fields_for :order_items do |p|
-          %tr
-            %td
-              = p.input :product_id, label: false, placeholder: t('order.search.product.id'), input_html: { id: 'products-search-id', autofocus: 'autofocus' }
-              .results#products-search-id-results
-              .results#products-search-id-no-results
-            %td
-              = p.input :product_name, label: false, placeholder: t('order.search.product.name'), input_html: { id: 'products-search-name', autofocus: 'autofocus' }
-              .results#products-search-name-results
-              .results#products-search-name-no-results
-            %td
-              = p.input :quantity, input_html: { value: 1, min: 1, class: 'quantity' }, wrapper_html: { class: 'item-quantity-field' }, label: false
-            %td.price#products-search-price= '0'
-            %td
+        %tbody.order-items-fields
+          = f.fields_for :order_items do |item|
+            = render 'order_item_fields', f: item
 
         %tfoot
           %tr
@@ -54,7 +42,9 @@
             %td{ id: 'total' }
             %td
 
-
+      .add-order-items-field
+        = link_to_add_association 'add', f, :order_items, class: 'btn btn-default', data: { association_insertion_node: '.order-items-fields', association_insertion_method: :append }
+        
       %h1
         = t('Receiver')
       %hr

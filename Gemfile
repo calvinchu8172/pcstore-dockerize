@@ -47,6 +47,7 @@ gem 'fog'
 gem 'hamlit'
 gem 'ransack', '1.8.10'
 gem 'jquery-ui-rails'
+gem 'cocoon'
 
 # --------------------- #
 # - for Log In system - #

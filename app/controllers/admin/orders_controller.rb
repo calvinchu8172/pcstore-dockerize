@@ -38,7 +38,7 @@ class Admin::OrdersController < Admin::BaseController
   private
 
   def order_params
-    params.require(:order).permit(:id, :user_id, :sum, order_items_attributes: [:id, :product_id, :product_name, :quantity, :product_price], receipt_attributes: [:name, :tel, :country, :city, :address])
+    params.require(:order).permit(:id, :user_id, :sum, order_items_attributes: [:id, :product_id, :product_name, :quantity, :product_price, :_destroy], receipt_attributes: [:name, :tel, :country, :city, :address])
   end
 
   def all_categroies
