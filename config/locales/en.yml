@@ -89,6 +89,13 @@ en:
       start: Date start from
       end: Date end to
     on_shelf: On shelf?
+
+  user:
+    id: Customer Number
+    email: Customer Email
+    search:
+      id: Search customer number
+      email: Search customer email
   
   category:
     all: Categories list
@@ -113,6 +120,7 @@ en:
     title: Order
     all: All Orders
     edit: Edit Order
+    new: Add Order
     my_orders: My orders
     number: Order No.
     date: Order Date
@@ -131,6 +139,9 @@ en:
       unknown: Unknown
     update:
       success: Update order successfully!
+    build:
+      success: Add order successfully!
+      failed: Failed to add order.
     delete: Delete
     no_order: No order.
     failed: This order has been failed.

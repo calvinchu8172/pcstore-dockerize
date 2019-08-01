@@ -14,9 +14,12 @@ Rails.application.routes.draw do
   get 'payments/new/:order_id', to: 'payments#new'
 
   resources :users do
-      post 'set_admin', :on => :collection # /users/set_admin
+    post 'set_admin', :on => :collection # /users/set_admin
                                           # member:  /users/123/set_admin
-      post 'remove_admin', :on => :collection
+    post 'remove_admin', :on => :collection
+    collection do
+      get 'search'
+    end
   end
 
 
@@ -49,7 +52,9 @@ Rails.application.routes.draw do
       end
     end
     resources :categories, except:[:show]
-    resources :orders
+    resources :orders do
+      resources :order_items
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

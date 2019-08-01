@@ -1,0 +1,67 @@
+.row
+  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+    %h1
+      = t('order.number') + ': ' 
+      = @order.id
+      = t('order.detail')
+      = "( #{@order.status} )"
+    %hr
+
+.row
+  .col-md-12
+    %table.table.table-hover
+      %thead
+        %tr
+          %td= t("product.number")
+          %td= t("product.name")
+          %td= t("Quantity")
+          %td= t("Price")
+
+      - @order.order_items.each do |item|
+        - if item.is_unavailable?
+          %tr.danger.failed
+            %td= item.product_id
+            %td= item.product_name
+            %td= item.quantity
+            %td= "#{number_to_currency item.product_price, precision: 0} (#{item.reason})"
+        - else
+          %tr
+            %td= item.product_id
+            %td= item.product_name
+            %td= item.quantity
+            %td= number_to_currency item.product_price, precision: 0
+      %tfoot
+        %tr
+          %td{ colspan: "3" }= t("Total")
+          %td= number_to_currency @order.sum, precision: 0
+
+%h1
+  = t('Receiver')
+%hr
+
+.row
+  .col-md-12
+    %table.table.table-hover
+      %tr
+        %th= t('Receiver')
+        %td= @order.receipt.name
+      %tr
+        %th= t('Address')
+        %td= @order.receipt.address
+      %tr
+        %th= t('City')
+        %td= @order.receipt.city
+      %tr
+        %th= t('Country')
+        %td= @order.receipt.country_name
+      %tr
+        %th= t('Phone')
+        %td= @order.receipt.tel
+
+.row
+  .col-md-12
+    = link_to t('back'), admin_orders_path, class: 'btn btn-default'
+    / - if @order.not_paid? && !@order.failed?
+    /   = link_to t('order.edit'), edit_order_path(@order), class: 'btn btn-default'
+    /   = link_to t('Check_out'), { controller: 'payments', action: 'new', order_id: @order.id }, class: 'btn btn-success'
+     

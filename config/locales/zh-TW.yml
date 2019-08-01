@@ -68,6 +68,13 @@ zh-TW:
       start: 日期起
       end: 日期迄
     on_shelf: 是否上架？
+
+  user:
+    id: 客戶編號
+    email: 客戶 Email
+    search:
+      id: 搜尋客戶編號
+      email: 搜尋客戶 Email
   
   category:
     all: 分類列表
@@ -92,6 +99,7 @@ zh-TW:
     title: 訂單
     all: 全部訂單
     edit: 編輯訂單
+    new: 新增訂單
     my_orders: 我的訂單
     number: 訂單編號
     date: 訂單日期
@@ -110,6 +118,9 @@ zh-TW:
       unknown: 未知
     update:
       success: 成功更新訂單
+    build:
+      success: 成功建立訂單
+      failed: 建立訂單失敗
     delete: 捨棄訂單
     no_order: 無訂單。
     failed: 此訂單已作廢。

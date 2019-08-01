@@ -2,9 +2,13 @@ class Order < ActiveRecord::Base
   include AASM
 
   belongs_to :user
-  has_one :receipt
-  has_many :order_items
-  accepts_nested_attributes_for :order_items, allow_destroy: true
+  has_one :receipt, dependent: :destroy
+  has_many :order_items, dependent: :destroy
+  accepts_nested_attributes_for :order_items, 
+    allow_destroy: true, 
+    reject_if: proc { |att| 
+      att[:product_id].blank? || att[:product_name].blank? 
+    }
   accepts_nested_attributes_for :receipt, allow_destroy: true
 
   def total_price

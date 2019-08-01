@@ -17,6 +17,8 @@
 
 //= require_tree .
 //= require orders
+//= require app
 //= require order_add_item
+//= require users
 
 

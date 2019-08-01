@@ -1,3 +1,3 @@
-// $(function(){
-//   var app = window.app = {};
-// });
+$(function(){
+  var app = window.app = {};
+});
