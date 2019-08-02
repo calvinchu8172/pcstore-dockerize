@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  autocomplete :product, :name, extra_data: [:image, :price], full: true, display_value: :funky_method
+  autocomplete :product, :id, extra_data: [:name, :image, :price], full: true
   before_action :set_cart
 
   def index

@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   get "welcome" => "welcome#index"
 
   #frontend  
-  resources :products, only:[:index, :show]
+  resources :products, only:[:index, :show] do
+    collection do
+      get :autocomplete_product_name
+      get :autocomplete_product_id
+    end
+  end
   resources :carts, only: [:create]
   resource :payment, only: [:create]
   get 'payments/new/:order_id', to: 'payments#new'

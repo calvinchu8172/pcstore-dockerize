@@ -30,6 +30,10 @@ class Product < ActiveRecord::Base
   def unrecycle
     self.is_recycled = false
     self.save
-  end  
+  end
+
+  def funky_method  
+    "#{self.name}"
+  end
 
 end

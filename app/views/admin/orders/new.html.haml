@@ -43,7 +43,7 @@
             %td
 
       .add-order-items-field
-        = link_to_add_association 'add', f, :order_items, class: 'btn btn-default', data: { association_insertion_node: '.order-items-fields', association_insertion_method: :append }
+        = link_to_add_association t('Add'), f, :order_items, class: 'btn btn-primary', id: 'add-nested-form-button', data: { association_insertion_node: '.order-items-fields', association_insertion_method: :append }
         
       %h1
         = t('Receiver')
@@ -76,7 +76,6 @@
 
 :javascript
   $(function() {
-    var product = new app.Products;
     var user = new app.Users;
   });
   
