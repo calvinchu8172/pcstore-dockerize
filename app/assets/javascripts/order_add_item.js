@@ -1,7 +1,5 @@
 $(function(){
 
-  // var app = window.app = {};
-
   app.Products = function() {
     this._input_name = $('#products-search-name');
     this._input_id = $('#products-search-id');
@@ -22,10 +20,8 @@ $(function(){
               },
               success: function(data) {
                 if (data.length === 0) {
-                  console.log("*****1");
                   $('#products-search-name-no-results').empty().append('<span class="no-result"> No result found </span>');
                 } else {
-                  console.log("*****2");
                   $('#products-search-name-no-results').empty();
                   response(data);
                 }
@@ -54,10 +50,8 @@ $(function(){
               },
               success: function(data) {
                 if (data.length === 0) {
-                  console.log("*****1");
                   $('#products-search-id-no-results').empty().append('<span class="no-result"> No result found </span>');
                 } else {
-                  console.log("*****2");
                   $('#products-search-id-no-results').empty();
                   response(data);
                 }

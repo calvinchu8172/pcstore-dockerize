@@ -1,7 +1,5 @@
 $(function(){
 
-  // var app = window.app = {};
-
   app.Users = function() {
     this._input_email = $('#users-search-email');
     this._input_id = $('#users-search-id');
@@ -22,10 +20,8 @@ $(function(){
               },
               success: function(data) {
                 if (data.length === 0) {
-                  console.log("*****1");
                   $('#users-search-email-no-results').empty().append('<span class="no-result"> No result found </span>');
                 } else {
-                  console.log("*****2");
                   $('#users-search-email-no-results').empty();
                   response(data);
                 }
@@ -54,10 +50,8 @@ $(function(){
               },
               success: function(data) {
                 if (data.length === 0) {
-                  console.log("*****1");
                   $('#users-search-id-no-results').empty().append('<span class="no-result"> No result found </span>');
                 } else {
-                  console.log("*****2");
                   $('#users-search-id-no-results').empty();
                   response(data);
                 }

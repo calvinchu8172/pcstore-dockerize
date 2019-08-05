@@ -1,43 +1,39 @@
 $(function(){
+
+  sum_caculator();
+
   $('.item-quantity-field').on('input', '.quantity', function(){
     sum_caculator();
   });
-});
-
-$(function(){
-  $('#add-item').appendTo('#order-items > tbody')
-});
-
-$(function(){
-
-  var inputs = $('.order-items-fields').find(".nested-fields-product-name");
-  var input_ids = $('.order-items-fields').find(".nested-fields-product-id"); 
-  inputs.each(function(index, elem){
-    change_value(`#${elem.id}`);
+  $('#products-search-id,#products-search-name').change(function() {
+    sum_caculator();
   });
-  input_ids.each(function(index, elem){
-    change_value2(`#${elem.id}`);
-  });  
+
+  $('#add-item').appendTo('#order-items > tbody');
+
+  change_value();
 
 });
 
 $(document).on('click', '#add-nested-form-button', function() {
-  
-  var inputs = $('.order-items-fields').find(".nested-fields-product-name");
-  var input_ids = $('.order-items-fields').find(".nested-fields-product-id");
-  inputs.each(function(index, elem){
-    change_value(`#${elem.id}`);
-  });
-  input_ids.each(function(index, elem){
-    change_value2(`#${elem.id}`);
-  });  
+  change_value();
   $('.item-quantity-field').on('input', '.quantity', function(){
     sum_caculator();
   });
-
 });
 
-function change_value(input_id) {
+function change_value() {
+  var input_names = $('.order-items-fields').find(".nested-fields-product-name");
+  var input_ids = $('.order-items-fields').find(".nested-fields-product-id"); 
+  input_names.each(function(index, elem){
+    change_id_value(`#${elem.id}`);
+  });
+  input_ids.each(function(index, elem){
+    change_name_value(`#${elem.id}`);
+  });
+};
+
+function change_id_value(input_id) {
   $(input_id).bind('railsAutocomplete.select', function(event, data){
     $(input_id).parents('.nested-fields').find('.nested-fields-product-id').val(data.item.id);
     $(input_id).parents('.nested-fields').find('.price').text(data.item.price);
@@ -45,7 +41,7 @@ function change_value(input_id) {
   });
 };
 
-function change_value2(input_id) {
+function change_name_value(input_id) {
   $(input_id).bind('railsAutocomplete.select', function(event, data){
     $(input_id).parents('.nested-fields').find('.nested-fields-product-name').val(data.item.name);
     $(input_id).parents('.nested-fields').find('.price').text(data.item.price);

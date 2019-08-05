@@ -1,0 +1,78 @@
+= simple_form_for([:admin, @order]) do |f|
+  %table.table.table-hover
+    %thead
+      %tr
+        %th= t('user.id')
+        %th= t('user.email')
+  
+    %tr
+      %td
+        = f.input :user_id, label: false, placeholder: t('user.search.id'), input_html: { id: 'users-search-id', autofocus: 'autofocus' }
+        .results#users-search-id-results
+        .results#users-search-id-no-results
+      %td
+        = f.input :email, as: :fake, label: false, placeholder: t('user.search.email'), input_html: { value: (f.object.user.present?) ? f.object.user.email : nil, id: 'users-search-email', autofocus: 'autofocus', formnovalidate: true, autocomplete: 'off' }
+        .results#users-search-email-results
+        .results#users-search-email-no-results
+
+  
+  %table.table.table-hover
+    %thead
+      %tr
+        %th= t("product.number")
+        %th= t("product.name")
+        %th= t("Quantity")
+        %th= t("Price") + " (NT)"
+        %th
+
+    %tbody.order-items-fields
+      = f.fields_for :order_items do |item|
+        = render 'order_item_fields', f: item
+
+    %tfoot
+      %tr
+        %th{ colspan: "3" }= t("Total")
+        %td{ id: 'total' }
+        %td
+
+  .add-order-items-field
+    = link_to_add_association t('Add'), f, :order_items, class: 'btn btn-primary', id: 'add-nested-form-button', data: { association_insertion_node: '.order-items-fields', association_insertion_method: :append }
+    
+  %h1
+    = t('Receiver')
+  %hr
+
+  .row
+    .col-md-12
+      %table.table.table-hover
+        = f.fields_for :receipt do |u|
+          %tr
+            %th= t('Receiver')
+            %td= u.input :name, label: false
+          %tr
+            %th= t('Phone')
+            %td= u.input :tel, label: false
+          %tr
+            %th= t('Country')
+            %td= u.input :country, label: false, format: :with_alpha2
+          %tr
+            %th= t('City')
+            %td= u.input :city, label: false
+          %tr
+            %th= t('Address')
+            %td= u.input :address, label: false
+
+  .row
+    .col-md-12
+      %table.table.table-hover
+        %thead
+          %tr
+            %th= t("order.status")
+          %tr
+            %td
+              = f.input :state, as: :select, collection: [[t("order.state.new"), 'new'], [t("order.state.paid"), 'paid'], [t("order.state.failed"), 'failed']], label: false, required: false, include_blank: false
+
+  .row
+    .col-md-12
+      = link_to t('back'), back_url, class: 'btn btn-default'
+      = f.submit t('confirm'), class: 'btn btn-primary'

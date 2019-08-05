@@ -8,14 +8,25 @@
     %hr
 
 .row
+  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+    %table.table.table-hover
+      %thead
+        %tr
+          %th= t('user.id')
+          %th= t('user.email')
+        %tr
+          %td= @order.user.id
+          %td= @order.user.email
+
+.row
   .col-md-12
     %table.table.table-hover
       %thead
         %tr
-          %td= t("product.number")
-          %td= t("product.name")
-          %td= t("Quantity")
-          %td= t("Price")
+          %th= t("product.number")
+          %th= t("product.name")
+          %th= t("Quantity")
+          %th= t("Price")
 
       - @order.order_items.each do |item|
         - if item.is_unavailable?
@@ -61,8 +72,6 @@
 .row
   .col-md-12
     = link_to t('back'), admin_orders_path, class: 'btn btn-default'
+    = link_to t('Edit'), edit_admin_order_path(@order), class: 'btn btn-primary'
     = link_to t('Delete'), admin_order_path(@order), method: :delete, class: 'btn btn-danger', data:{ confirm: t('Make_sure') }
-    / - if @order.not_paid? && !@order.failed?
-    /   = link_to t('order.edit'), edit_order_path(@order), class: 'btn btn-default'
-    /   = link_to t('Check_out'), { controller: 'payments', action: 'new', order_id: @order.id }, class: 'btn btn-success'
      

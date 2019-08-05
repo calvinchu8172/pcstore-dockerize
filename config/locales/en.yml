@@ -139,6 +139,7 @@ en:
       unknown: Unknown
     update:
       success: Update order successfully!
+      failed: Failed to update order.
     destroy:
       success: Delete order successfully!
       failed: Failed to delete order.

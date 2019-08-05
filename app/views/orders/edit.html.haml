@@ -22,6 +22,8 @@
             %td= order_item.product_name
             %td
               = f.fields_for :order_items, order_item do |p|
+                = p.input :product_id, as: :hidden, input_html: { value: order_item.product_id }
+                = p.input :product_name, as: :hidden, input_html: { value: order_item.product_name }
                 = p.input :quantity, input_html: { min: 1, class: 'quantity' }, wrapper_html: { class: 'item-quantity-field' }, label: false
             %td.price= order_item.product_price
             %td

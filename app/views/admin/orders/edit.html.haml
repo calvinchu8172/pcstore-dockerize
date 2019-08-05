@@ -1,11 +1,11 @@
 .row
   .col-lg-12.col-md-12.col-sm-12.col-xs-12
     %h1
-      = t('order.new')
+      = t('order.edit')
 
 .row
   .col-lg-12.col-md-12.col-sm-12.col-xs-12
-    = render partial: 'form', locals: { back_url: admin_orders_path }
+    = render partial: 'form', locals: { back_url: admin_order_path(@order) }
 
 :javascript
   $(function() {

@@ -1,16 +1,10 @@
 %tr.nested-fields
   %td
     = f.input :product_id, url: autocomplete_product_id_products_path, as: :autocomplete, label: false, placeholder: t('order.search.product.id'), input_html: { class: 'nested-fields-product-id', 'min-length': 1  }
-    .results#products-search-id-results
-    .results#products-search-id-no-results
   %td
-    / = f.input :product_name, label: false, placeholder: t('order.search.product.name'), input_html: { id: 'products-search-name', autofocus: 'autofocus' }
-    / .results#products-search-name-results
-    / .results#products-search-name-no-results
-
     = f.input :product_name, url: autocomplete_product_name_products_path, as: :autocomplete, label: false, placeholder: t('order.search.product.name'), input_html: { class: 'nested-fields-product-name', 'min-length': 1 }
   %td
-    = f.input :quantity, input_html: { value: 1, min: 1, class: 'quantity' }, wrapper_html: { class: 'item-quantity-field' }, label: false
-  %td.price#products-search-price= '0'
+    = f.input :quantity, input_html: { value: f.object.quantity || 1, min: 1, class: 'quantity' }, wrapper_html: { class: 'item-quantity-field' }, label: false
+  %td.price#products-search-price= f.object.product_price || '0'
   %td
-    = link_to_remove_association t('Delete'), f, class: 'btn btn-danger'
+    = link_to_remove_association t('Delete'), f, class: 'btn btn-danger', data:{ confirm: t('Make_sure') }

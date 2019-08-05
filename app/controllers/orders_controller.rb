@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
       @order.save
       redirect_to order_path(@order), success: I18n.t('order.update.success')
     else
-      render :edit
+      render :edit, danger: I18n.t('order.update.failed')
     end
   end
 
@@ -54,7 +54,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:id, order_items_attributes: [:id, :quantity], receipt_attributes: [:name, :tel, :country, :city, :address])
+    params.require(:order).permit(:id, order_items_attributes: [:id, :product_id, :product_name, :quantity], receipt_attributes: [:name, :tel, :country, :city, :address])
   end
 
   def find_order
