@@ -17,7 +17,7 @@ end
 
 def create_product category, product, file
   product = Product.create!( 
-    name: product,
+    name: "#{product} #{category.name}",
     description: "#{product} of #{category.name}",
     price: rand(10..1000),
     is_online: true,
