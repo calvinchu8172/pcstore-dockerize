@@ -35,6 +35,15 @@ class Admin::OrdersController < Admin::BaseController
     end
   end
 
+  def destroy
+    @order = Order.find(params[:id])
+    if @order.destroy
+      redirect_to admin_orders_path, success: I18n.t('order.destroy.success')
+    else
+      redirect_to admin_orders_path, danger: I18n.t('order.destroy.failed')
+    end
+  end
+
   private
 
   def order_params

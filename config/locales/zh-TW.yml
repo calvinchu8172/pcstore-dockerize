@@ -118,6 +118,9 @@ zh-TW:
       unknown: 未知
     update:
       success: 成功更新訂單
+    destroy:
+      success: 成功刪除訂單
+      failed: 刪除訂單失敗
     build:
       success: 成功建立訂單
       failed: 建立訂單失敗
