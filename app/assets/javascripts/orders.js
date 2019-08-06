@@ -26,10 +26,10 @@ function change_value() {
   var input_names = $('.order-items-fields').find(".nested-fields-product-name");
   var input_ids = $('.order-items-fields').find(".nested-fields-product-id"); 
   input_names.each(function(index, elem){
-    change_id_value(`#${elem.id}`);
+    change_id_value('#' + elem.id);
   });
   input_ids.each(function(index, elem){
-    change_name_value(`#${elem.id}`);
+    change_name_value('#' + elem.id);
   });
 };
 
