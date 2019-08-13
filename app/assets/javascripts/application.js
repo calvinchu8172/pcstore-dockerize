@@ -22,5 +22,6 @@
 //= require app
 //= require order_add_item
 //= require users
+//= require products
 
 

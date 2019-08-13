@@ -20,11 +20,11 @@
 
       .col-md-6
         .btn-group.ransack-btn-group
-          .btn.btn-default
+          .btn.btn-default.product-sort
             = sort_link( @q, :name, t('sort.name') )
-          .btn.btn-default
+          .btn.btn-default.product-sort
             = sort_link( @q, :price, t('sort.price') )
-          .btn.btn-default
+          .btn.btn-default.product-sort
             = sort_link( @q, :created_at, t('sort.date') )
 
     = render partial: 'pagination', locals: { page: @products }

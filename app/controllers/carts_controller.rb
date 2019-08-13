@@ -21,7 +21,6 @@ class CartsController < ApplicationController
     if @cart.total_price == 0
       redirect_to :back, info: I18n.t("no_product_shopping_first")
     else
-      # @order_form = OrderForm.new
       @receipt = Receipt.new
     end
   end
