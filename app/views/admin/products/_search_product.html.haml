@@ -1,7 +1,7 @@
 = search_form_for @q, url: url, html: { class: 'orders-form' } do |f|
   .form-group
     = f.input :id_eq, placeholder: t("search.number"), label: t("product.number"), required: false, wrapper_html: { class: 'd-flex' }
-    = f.input :name_eq, placeholder: t("product.name"), label: t("product.name"), required: false, wrapper_html: { class: 'd-flex' }
+    = f.input :name_cont, placeholder: t("product.name"), label: t("product.name"), required: false, wrapper_html: { class: 'd-flex' }
   .form-group
     = f.input :is_online_eq, as: :select, collection: [[t("On_shelf"), true], [t("Off_shelf"), false]], include_blank: true, label: t("search.on_shelf"), required: false, wrapper_html: { class: 'd-flex' }
   .form-group
