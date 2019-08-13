@@ -3,7 +3,7 @@
     %h1= t('order.all')
 
   .col-lg-2.col-md-2.col-sm-12.col-xs-12
-    = render partial: 'search_order', locals: { url: admin_orders_path, default_created_at: Order.first.created_at }
+    = render partial: 'search_order', locals: { url: admin_orders_path, default_created_at: Order.first.nil?? Time.zone.now : Order.first.created_at }
 
   .col-lg-10.col-md-10.col-sm-12.col-xs-12
     = render partial: 'pagination', locals: { page: @orders }
@@ -26,7 +26,9 @@
             %td= order.user.email
             %td= order.sum
             %td= order.status
-            %td= link_to t('Detail'), admin_order_path(order), class:'btn btn-warning btn-xs'
+            %td
+              = link_to t('Detail'), admin_order_path(order), class: 'btn btn-warning btn-xs'
+              = link_to t('Delete'), admin_order_path(order), method: :delete, class: 'btn btn-danger btn-xs', data:{ confirm: t('Make_sure') }
         - else
           %tr
             %td= order.id
@@ -34,7 +36,10 @@
             %td= order.user.email
             %td= order.sum
             %td= order.status
-            %td= link_to t('Detail'), admin_order_path(order), class:'btn btn-default btn-xs'
+            %td
+              = link_to t('Detail'), admin_order_path(order), class: 'btn btn-default btn-xs'
+              = link_to t('Delete'), admin_order_path(order), method: :delete, class: 'btn btn-danger btn-xs', data:{ confirm: t('Make_sure') }
+
 
     .col-lg-10.col-md-10.col-sm-12.col-xs-12
       = render partial: 'pagination', locals: { page: @orders }
