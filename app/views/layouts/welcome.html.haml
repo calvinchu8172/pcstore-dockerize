@@ -9,6 +9,7 @@
     %script{ src: "https://js.braintreegateway.com/v2/braintree.js" }
 
   %body
+    = render 'layouts/gtm'
     = render 'navbar'
     .intro-header
       .container
@@ -18,6 +19,6 @@
     %footer
       .container
         .row
-          .col-lg-12      
+          .col-lg-12
             %p.copyright.text-muted.small
               = 'Copyright &copy; Calvin Chu 2015. All Rights Reserved'.html_safe
